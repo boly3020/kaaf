@@ -9,10 +9,10 @@
 
     <!-- Preload critical assets -->
     <link rel="preload" href="css/styles.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" as="style">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
@@ -21,12 +21,27 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
+    <!-- Cursor follower -->
+    <div class="cursor-follower"></div>
+
+    <!-- Loading screen -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">
+            <svg viewBox="0 0 200 50" class="logo-svg-loader">
+                <path d="M0 0h8v20h4v-8l12-12h12l-16 16 16 20h-12l-12-14h-4v14h-8v-36z M44 0h8v8h12v8h-12v12h12v8h-20v-36z M76 0h8v8h12v8h-12v12h12v8h-20v-36z M108 0h20v8h-12v6h12v8h-12v14h-8v-36z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
             <a href="#" class="logo" aria-label="KAAF Home">
-                <svg viewBox="0 0 120 32" class="logo-svg" aria-hidden="true">
-                    <path d="M0 0h6v14h2L16 0h8l-10 16 10 16h-8l-8-14H6v14H0V0zM28 0h6v6h8v6h-8v14h8v6h-14V0zM54 0h6v6h8v6h-8v14h8v6h-14V0zM80 0h14v6h-8v6h8v20h-6V12h-2v20h-6V0z" fill="currentColor"/>
+                <svg viewBox="0 0 200 50" class="logo-svg" aria-hidden="true">
+                    <path d="M0 0h8v20h4v-8l12-12h12l-16 16 16 20h-12l-12-14h-4v14h-8v-36z M44 0h8v8h12v8h-12v12h12v8h-20v-36z M76 0h8v8h12v8h-12v12h12v8h-20v-36z M108 0h20v8h-12v6h12v8h-12v14h-8v-36z" fill="currentColor"/>
                 </svg>
             </a>
 
@@ -49,32 +64,48 @@
     <main>
         <!-- Hero Section -->
         <section class="hero" id="home">
+            <div class="hero-bg">
+                <div class="hero-gradient"></div>
+                <div class="hero-grid"></div>
+                <div class="hero-particles" id="particles"></div>
+            </div>
             <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Architecture Studio</span>
+                </div>
                 <h1 class="hero-title">
-                    <span class="hero-title-line">Architecture</span>
+                    <span class="hero-title-line" data-text="Architecture">Architecture</span>
                     <span class="hero-title-line">That <em>Inspires</em></span>
                 </h1>
                 <p class="hero-subtitle">Transforming visions into extraordinary spaces through innovative design and meticulous craftsmanship.</p>
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Explore Projects</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                 </div>
             </div>
             <div class="hero-scroll">
-                <span>Scroll</span>
-                <div class="scroll-indicator"></div>
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span>Scroll to explore</span>
             </div>
         </section>
 
         <!-- About Section -->
         <section class="about section" id="about">
             <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">About Us</span>
-                    <h2 class="section-title">Crafting Spaces<br>Since 2015</h2>
-                </div>
                 <div class="about-content">
                     <div class="about-text">
+                        <div class="section-header">
+                            <span class="section-tag">About Us</span>
+                            <h2 class="section-title">Crafting Spaces<br>Since 2015</h2>
+                        </div>
                         <p class="lead">At KAAF, we believe architecture is more than buildings—it's about creating experiences that resonate with people and stand the test of time.</p>
                         <p>Founded by Karim Alaa, our firm brings together a passionate team of architects, designers, and innovators dedicated to pushing the boundaries of contemporary design while respecting tradition and context.</p>
                         <div class="about-stats">
@@ -92,13 +123,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="about-image">
-                        <div class="image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&q=80"
-                                 alt="Modern architectural building with geometric patterns"
-                                 loading="lazy"
-                                 width="600"
-                                 height="800">
+                    <div class="about-visual">
+                        <div class="about-image-stack">
+                            <div class="image-card image-card--1">
+                                <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&q=80"
+                                     alt="Modern architectural building"
+                                     loading="lazy">
+                            </div>
+                            <div class="image-card image-card--2">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80"
+                                     alt="Luxury villa design"
+                                     loading="lazy">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,6 +150,7 @@
                 </div>
                 <div class="services-grid">
                     <article class="service-card">
+                        <div class="service-number">01</div>
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M21 7l-9-4-9 4"/>
@@ -121,8 +158,10 @@
                         </div>
                         <h3 class="service-title">Architectural Design</h3>
                         <p class="service-desc">Comprehensive architectural solutions from concept to completion, tailored to your unique vision and requirements.</p>
+                        <div class="service-hover"></div>
                     </article>
                     <article class="service-card">
+                        <div class="service-number">02</div>
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
@@ -130,8 +169,10 @@
                         </div>
                         <h3 class="service-title">Interior Design</h3>
                         <p class="service-desc">Creating harmonious interior spaces that blend functionality with aesthetic excellence.</p>
+                        <div class="service-hover"></div>
                     </article>
                     <article class="service-card">
+                        <div class="service-number">03</div>
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M9 17H5a2 2 0 00-2 2 2 2 0 002 2h14a2 2 0 002-2 2 2 0 00-2-2h-4M9 17v-5a2 2 0 012-2h2a2 2 0 012 2v5M9 17h6"/>
@@ -139,8 +180,10 @@
                         </div>
                         <h3 class="service-title">Urban Planning</h3>
                         <p class="service-desc">Sustainable urban development strategies that enhance communities and respect the environment.</p>
+                        <div class="service-hover"></div>
                     </article>
                     <article class="service-card">
+                        <div class="service-number">04</div>
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
@@ -151,6 +194,7 @@
                         </div>
                         <h3 class="service-title">Project Management</h3>
                         <p class="service-desc">End-to-end project oversight ensuring timely delivery, quality control, and budget management.</p>
+                        <div class="service-hover"></div>
                     </article>
                 </div>
             </div>
@@ -162,81 +206,84 @@
                 <div class="section-header">
                     <span class="section-tag">Portfolio</span>
                     <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-desc">Click on any project to view full details and documentation</p>
                 </div>
                 <div class="projects-grid">
-                    <article class="project-card project-card--large">
+                    <a href="projects/al-shorouk.html" class="project-card project-card--featured">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80"
-                                 alt="The Curve - Modern residential complex with curved facade"
-                                 loading="lazy"
-                                 width="800"
-                                 height="600">
+                                 alt="Al-Shorouk Development"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <span class="view-project">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                         <div class="project-info">
-                            <span class="project-category">Residential</span>
-                            <h3 class="project-title">The Curve Residences</h3>
-                            <p class="project-location">Cairo, Egypt</p>
+                            <span class="project-category">Residential Complex</span>
+                            <h3 class="project-title">Al-Shorouk Development</h3>
+                            <p class="project-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Cairo, Egypt
+                            </p>
                         </div>
-                    </article>
-                    <article class="project-card">
+                    </a>
+                    <a href="projects/project-19-3.html" class="project-card">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
-                                 alt="Skyline Tower - Commercial office building"
-                                 loading="lazy"
-                                 width="600"
-                                 height="400">
+                                 alt="Project 19-3"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <span class="view-project">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                         <div class="project-info">
                             <span class="project-category">Commercial</span>
-                            <h3 class="project-title">Skyline Tower</h3>
-                            <p class="project-location">Dubai, UAE</p>
+                            <h3 class="project-title">Project 19-3</h3>
+                            <p class="project-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                New Cairo, Egypt
+                            </p>
                         </div>
-                    </article>
-                    <article class="project-card">
+                    </a>
+                    <a href="projects/project-2.html" class="project-card">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80"
-                                 alt="Villa Serene - Luxury private villa"
-                                 loading="lazy"
-                                 width="600"
-                                 height="400">
+                                 alt="Project 2"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <span class="view-project">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                         <div class="project-info">
                             <span class="project-category">Residential</span>
-                            <h3 class="project-title">Villa Serene</h3>
-                            <p class="project-location">Alexandria, Egypt</p>
+                            <h3 class="project-title">Project 2</h3>
+                            <p class="project-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Alexandria, Egypt
+                            </p>
                         </div>
-                    </article>
-                    <article class="project-card">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1574958269340-fa927503f3dd?w=600&q=80"
-                                 alt="Cultural Center - Public cultural space"
-                                 loading="lazy"
-                                 width="600"
-                                 height="400">
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category">Cultural</span>
-                            <h3 class="project-title">Arts & Heritage Center</h3>
-                            <p class="project-location">Luxor, Egypt</p>
-                        </div>
-                    </article>
-                    <article class="project-card project-card--large">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
-                                 alt="Oasis Resort - Luxury hospitality project"
-                                 loading="lazy"
-                                 width="800"
-                                 height="600">
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category">Hospitality</span>
-                            <h3 class="project-title">Oasis Resort & Spa</h3>
-                            <p class="project-location">Sharm El Sheikh, Egypt</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="projects-cta">
-                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                    </a>
                 </div>
             </div>
         </section>
@@ -253,16 +300,39 @@
                         <p class="contact-desc">Ready to transform your vision into reality? We'd love to hear about your project.</p>
                         <div class="contact-details">
                             <div class="contact-item">
-                                <strong>Email</strong>
-                                <a href="mailto:hello@kaaf.design">hello@kaaf.design</a>
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <strong>Email</strong>
+                                    <a href="mailto:hello@kaaf.design">hello@kaaf.design</a>
+                                </div>
                             </div>
                             <div class="contact-item">
-                                <strong>Phone</strong>
-                                <a href="tel:+201234567890">+20 123 456 7890</a>
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <a href="tel:+201234567890">+20 123 456 7890</a>
+                                </div>
                             </div>
                             <div class="contact-item">
-                                <strong>Address</strong>
-                                <address>15 Architectural Plaza<br>New Cairo, Egypt</address>
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <strong>Address</strong>
+                                    <address>15 Architectural Plaza<br>New Cairo, Egypt</address>
+                                </div>
                             </div>
                         </div>
                         <div class="social-links">
@@ -289,15 +359,15 @@
                     <form class="contact-form" id="contactForm" action="#" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required autocomplete="name">
+                            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required autocomplete="email">
+                            <input type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" autocomplete="tel">
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+20 xxx xxx xxxx">
                         </div>
                         <div class="form-group">
                             <label for="project">Project Type</label>
@@ -311,9 +381,14 @@
                         </div>
                         <div class="form-group form-group--full">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <textarea id="message" name="message" rows="4" required placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Message</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -325,8 +400,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <svg viewBox="0 0 120 32" class="footer-logo" aria-label="KAAF">
-                        <path d="M0 0h6v14h2L16 0h8l-10 16 10 16h-8l-8-14H6v14H0V0zM28 0h6v6h8v6h-8v14h8v6h-14V0zM54 0h6v6h8v6h-8v14h8v6h-14V0zM80 0h14v6h-8v6h8v20h-6V12h-2v20h-6V0z" fill="currentColor"/>
+                    <svg viewBox="0 0 200 50" class="footer-logo" aria-label="KAAF">
+                        <path d="M0 0h8v20h4v-8l12-12h12l-16 16 16 20h-12l-12-14h-4v14h-8v-36z M44 0h8v8h12v8h-12v12h12v8h-20v-36z M76 0h8v8h12v8h-12v12h12v8h-20v-36z M108 0h20v8h-12v6h12v8h-12v14h-8v-36z" fill="currentColor"/>
                     </svg>
                     <p>Karim Alaa Architectural Firm</p>
                 </div>

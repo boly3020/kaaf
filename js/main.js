@@ -11,102 +11,164 @@
     const navToggle = document.getElementById('navToggle');
     const nav = document.getElementById('nav');
     const navLinks = document.querySelectorAll('.nav-link');
+    const loader = document.getElementById('loader');
+    const cursorFollower = document.querySelector('.cursor-follower');
+
+    // --------------------------------------------------------------------------
+    // Loading Screen
+    // --------------------------------------------------------------------------
+    function initLoader() {
+        if (!loader) return;
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 1800);
+        });
+
+        // Prevent scroll during loading
+        document.body.style.overflow = 'hidden';
+    }
+
+    // --------------------------------------------------------------------------
+    // Custom Cursor
+    // --------------------------------------------------------------------------
+    function initCursor() {
+        if (!cursorFollower || window.matchMedia('(hover: none)').matches) return;
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            const dx = mouseX - cursorX;
+            const dy = mouseY - cursorY;
+
+            cursorX += dx * 0.15;
+            cursorY += dy * 0.15;
+
+            cursorFollower.style.left = cursorX + 'px';
+            cursorFollower.style.top = cursorY + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+
+        // Hover effects
+        const hoverElements = document.querySelectorAll('a, button, .project-card, .service-card');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorFollower.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursorFollower.classList.remove('active'));
+        });
+    }
 
     // --------------------------------------------------------------------------
     // Mobile Navigation
     // --------------------------------------------------------------------------
-    function toggleNav() {
-        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !isExpanded);
-        nav.classList.toggle('active');
-        document.body.style.overflow = isExpanded ? '' : 'hidden';
-    }
+    function initNavigation() {
+        if (!navToggle || !nav) return;
 
-    function closeNav() {
-        navToggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    navToggle.addEventListener('click', toggleNav);
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', closeNav);
-    });
-
-    // Close nav on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && nav.classList.contains('active')) {
-            closeNav();
+        function toggleNav() {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            nav.classList.toggle('active');
+            document.body.style.overflow = isExpanded ? '' : 'hidden';
         }
-    });
+
+        function closeNav() {
+            navToggle.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        navToggle.addEventListener('click', toggleNav);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+
+        // Close nav on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) {
+                closeNav();
+            }
+        });
+    }
 
     // --------------------------------------------------------------------------
     // Header Scroll Effect
     // --------------------------------------------------------------------------
-    let lastScroll = 0;
+    function initHeaderScroll() {
+        if (!header) return;
 
-    function handleScroll() {
-        const currentScroll = window.pageYOffset;
+        function handleScroll() {
+            const currentScroll = window.pageYOffset;
 
-        // Add scrolled class
-        if (currentScroll > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
 
-        lastScroll = currentScroll;
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Initial check
     }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // --------------------------------------------------------------------------
     // Smooth Scroll for Anchor Links
     // --------------------------------------------------------------------------
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
 
-            if (target) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = targetPosition - headerHeight;
+                if (target) {
+                    const headerHeight = header ? header.offsetHeight : 0;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = targetPosition - headerHeight;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
-    });
+    }
 
     // --------------------------------------------------------------------------
     // Scroll Reveal Animation
     // --------------------------------------------------------------------------
-    function reveal() {
-        const reveals = document.querySelectorAll('.reveal');
-
-        reveals.forEach(element => {
-            const windowHeight = window.innerHeight;
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-
-            if (elementTop < windowHeight - elementVisible) {
-                element.classList.add('active');
-            }
-        });
-    }
-
-    // Add reveal class to sections
     function initReveal() {
-        const sections = document.querySelectorAll('.section-header, .service-card, .project-card, .about-text, .about-image, .contact-info, .contact-form');
+        const reveals = document.querySelectorAll('.section-header, .service-card, .project-card, .about-text, .about-visual, .contact-info, .contact-form');
 
-        sections.forEach((section, index) => {
-            section.classList.add('reveal');
-            section.style.transitionDelay = `${index * 0.1}s`;
+        if (!reveals.length) return;
+
+        reveals.forEach((element, index) => {
+            element.classList.add('reveal');
         });
+
+        function reveal() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
 
         window.addEventListener('scroll', reveal, { passive: true });
         reveal(); // Initial check
@@ -115,8 +177,10 @@
     // --------------------------------------------------------------------------
     // Counter Animation for Stats
     // --------------------------------------------------------------------------
-    function animateCounters() {
+    function initCounters() {
         const counters = document.querySelectorAll('.stat-number[data-count]');
+
+        if (!counters.length) return;
 
         const observerOptions = {
             threshold: 0.5,
@@ -152,29 +216,51 @@
     }
 
     // --------------------------------------------------------------------------
-    // Lazy Loading Images (Native + Fallback)
+    // Hero Particles
     // --------------------------------------------------------------------------
-    function initLazyLoading() {
-        // Check if native lazy loading is supported
-        if ('loading' in HTMLImageElement.prototype) {
-            // Native lazy loading supported - images already have loading="lazy"
-            return;
+    function initParticles() {
+        const particles = document.getElementById('particles');
+        if (!particles) return;
+
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 4 + 1}px;
+                height: ${Math.random() * 4 + 1}px;
+                background: rgba(196, 112, 60, ${Math.random() * 0.5 + 0.2});
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: float ${Math.random() * 10 + 10}s linear infinite;
+                animation-delay: -${Math.random() * 10}s;
+            `;
+            particles.appendChild(particle);
         }
 
-        // Fallback for older browsers
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.src; // Trigger load
-                    imageObserver.unobserve(img);
+        // Add float animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% {
+                    transform: translate(0, 0) rotate(0deg);
+                    opacity: 0;
                 }
-            });
-        });
-
-        lazyImages.forEach(img => imageObserver.observe(img));
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(${Math.random() > 0.5 ? '' : '-'}100px, -100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
 
     // --------------------------------------------------------------------------
@@ -197,42 +283,23 @@
                 return;
             }
 
-            // Here you would typically send the form data to a server
-            // For now, we'll just show a success message
             const button = form.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
+            const buttonText = button.querySelector('span');
+            const originalText = buttonText.textContent;
 
-            button.textContent = 'Sending...';
+            buttonText.textContent = 'Sending...';
             button.disabled = true;
 
             // Simulate sending
             setTimeout(() => {
-                button.textContent = 'Message Sent!';
+                buttonText.textContent = 'Message Sent!';
                 form.reset();
 
                 setTimeout(() => {
-                    button.textContent = originalText;
+                    buttonText.textContent = originalText;
                     button.disabled = false;
                 }, 2000);
             }, 1000);
-        });
-    }
-
-    // --------------------------------------------------------------------------
-    // Project Card Hover Effect (Touch Support)
-    // --------------------------------------------------------------------------
-    function initProjectCards() {
-        const projectCards = document.querySelectorAll('.project-card');
-
-        projectCards.forEach(card => {
-            // For touch devices, toggle info on tap
-            card.addEventListener('touchstart', function(e) {
-                if (!this.classList.contains('touched')) {
-                    e.preventDefault();
-                    projectCards.forEach(c => c.classList.remove('touched'));
-                    this.classList.add('touched');
-                }
-            });
         });
     }
 
@@ -242,8 +309,10 @@
     function initActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
 
+        if (!sections.length || !navLinks.length) return;
+
         function updateActiveLink() {
-            const scrollPos = window.pageYOffset + header.offsetHeight + 100;
+            const scrollPos = window.pageYOffset + (header ? header.offsetHeight : 0) + 100;
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -265,15 +334,43 @@
     }
 
     // --------------------------------------------------------------------------
+    // Magnetic Effect on Buttons (Desktop only)
+    // --------------------------------------------------------------------------
+    function initMagneticButtons() {
+        if (window.matchMedia('(hover: none)').matches) return;
+
+        const buttons = document.querySelectorAll('.btn-primary');
+
+        buttons.forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
+        });
+    }
+
+    // --------------------------------------------------------------------------
     // Initialize
     // --------------------------------------------------------------------------
     function init() {
+        initLoader();
+        initCursor();
+        initNavigation();
+        initHeaderScroll();
+        initSmoothScroll();
         initReveal();
-        animateCounters();
-        initLazyLoading();
+        initCounters();
+        initParticles();
         initContactForm();
-        initProjectCards();
         initActiveNavLink();
+        initMagneticButtons();
     }
 
     // Run on DOM ready

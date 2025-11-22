@@ -357,6 +357,30 @@
     }
 
     // --------------------------------------------------------------------------
+    // PDF Tab Functionality
+    // --------------------------------------------------------------------------
+    function initPdfTabs() {
+        const pdfTabs = document.querySelectorAll('.pdf-tab');
+        const pdfPreview = document.getElementById('pdfPreview');
+
+        if (!pdfTabs.length || !pdfPreview) return;
+
+        pdfTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                pdfTabs.forEach(t => t.classList.remove('active'));
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Update iframe src
+                const pdfUrl = tab.getAttribute('data-pdf');
+                pdfPreview.src = pdfUrl;
+            });
+        });
+    }
+
+    // --------------------------------------------------------------------------
     // Initialize
     // --------------------------------------------------------------------------
     function init() {
@@ -371,6 +395,7 @@
         initContactForm();
         initActiveNavLink();
         initMagneticButtons();
+        initPdfTabs();
     }
 
     // Run on DOM ready

@@ -1458,6 +1458,57 @@ h1, h2, h3, h4, h5, h6 {
     height: 16px;
 }
 
+/* PDF Preview Styles */
+.pdf-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.pdf-tab {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-cream);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.pdf-tab:hover {
+    background: var(--color-primary-light);
+    color: var(--color-white);
+}
+
+.pdf-tab.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pdf-preview-container {
+    width: 100%;
+    margin-bottom: var(--space-md);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-cream-dark);
+}
+
+.pdf-preview {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .pdf-preview {
+        height: 400px;
+    }
+}
+
 .back-link {
     display: inline-flex;
     align-items: center;

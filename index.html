@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KAAF - Karim Alaa Architectural Firm. Modern architecture and design solutions that transform spaces into extraordinary experiences.">
+    <meta name="theme-color" content="#1a3a3a">
+    <title>KAAF | Karim Alaa Architectural Firm</title>
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo" aria-label="KAAF Home">
+                <svg viewBox="0 0 120 32" class="logo-svg" aria-hidden="true">
+                    <path d="M0 0h6v14h2L16 0h8l-10 16 10 16h-8l-8-14H6v14H0V0zM28 0h6v6h8v6h-8v14h8v6h-14V0zM54 0h6v6h8v6h-8v14h8v6h-14V0zM80 0h14v6h-8v6h8v20h-6V12h-2v20h-6V0z" fill="currentColor"/>
+                </svg>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+
+            <nav class="nav" id="nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link nav-link--cta">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-title-line">Architecture</span>
+                    <span class="hero-title-line">That <em>Inspires</em></span>
+                </h1>
+                <p class="hero-subtitle">Transforming visions into extraordinary spaces through innovative design and meticulous craftsmanship.</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-indicator"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">About Us</span>
+                    <h2 class="section-title">Crafting Spaces<br>Since 2015</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="lead">At KAAF, we believe architecture is more than buildings—it's about creating experiences that resonate with people and stand the test of time.</p>
+                        <p>Founded by Karim Alaa, our firm brings together a passionate team of architects, designers, and innovators dedicated to pushing the boundaries of contemporary design while respecting tradition and context.</p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-count="150">0</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-count="12">0</span>
+                                <span class="stat-label">Design Awards</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-count="8">0</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&q=80"
+                                 alt="Modern architectural building with geometric patterns"
+                                 loading="lazy"
+                                 width="600"
+                                 height="800">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services section" id="services">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <span class="section-tag">What We Do</span>
+                    <h2 class="section-title">Our Services</h2>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M21 7l-9-4-9 4"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Architectural Design</h3>
+                        <p class="service-desc">Comprehensive architectural solutions from concept to completion, tailored to your unique vision and requirements.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Interior Design</h3>
+                        <p class="service-desc">Creating harmonious interior spaces that blend functionality with aesthetic excellence.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 17H5a2 2 0 00-2 2 2 2 0 002 2h14a2 2 0 002-2 2 2 0 00-2-2h-4M9 17v-5a2 2 0 012-2h2a2 2 0 012 2v5M9 17h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Urban Planning</h3>
+                        <p class="service-desc">Sustainable urban development strategies that enhance communities and respect the environment.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Project Management</h3>
+                        <p class="service-desc">End-to-end project oversight ensuring timely delivery, quality control, and budget management.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Portfolio</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                </div>
+                <div class="projects-grid">
+                    <article class="project-card project-card--large">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80"
+                                 alt="The Curve - Modern residential complex with curved facade"
+                                 loading="lazy"
+                                 width="800"
+                                 height="600">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Residential</span>
+                            <h3 class="project-title">The Curve Residences</h3>
+                            <p class="project-location">Cairo, Egypt</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
+                                 alt="Skyline Tower - Commercial office building"
+                                 loading="lazy"
+                                 width="600"
+                                 height="400">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Commercial</span>
+                            <h3 class="project-title">Skyline Tower</h3>
+                            <p class="project-location">Dubai, UAE</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80"
+                                 alt="Villa Serene - Luxury private villa"
+                                 loading="lazy"
+                                 width="600"
+                                 height="400">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Residential</span>
+                            <h3 class="project-title">Villa Serene</h3>
+                            <p class="project-location">Alexandria, Egypt</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1574958269340-fa927503f3dd?w=600&q=80"
+                                 alt="Cultural Center - Public cultural space"
+                                 loading="lazy"
+                                 width="600"
+                                 height="400">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Cultural</span>
+                            <h3 class="project-title">Arts & Heritage Center</h3>
+                            <p class="project-location">Luxor, Egypt</p>
+                        </div>
+                    </article>
+                    <article class="project-card project-card--large">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+                                 alt="Oasis Resort - Luxury hospitality project"
+                                 loading="lazy"
+                                 width="800"
+                                 height="600">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Hospitality</span>
+                            <h3 class="project-title">Oasis Resort & Spa</h3>
+                            <p class="project-location">Sharm El Sheikh, Egypt</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="projects-cta">
+                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <div class="section-header">
+                            <span class="section-tag">Get in Touch</span>
+                            <h2 class="section-title">Let's Build<br>Something Great</h2>
+                        </div>
+                        <p class="contact-desc">Ready to transform your vision into reality? We'd love to hear about your project.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <strong>Email</strong>
+                                <a href="mailto:hello@kaaf.design">hello@kaaf.design</a>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Phone</strong>
+                                <a href="tel:+201234567890">+20 123 456 7890</a>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Address</strong>
+                                <address>15 Architectural Plaza<br>New Cairo, Egypt</address>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="LinkedIn" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Behance" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 7h-7M22 7v10c0 1-1 2-2 2h-3M15 7v10c0 1 1 2 2 2"/>
+                                    <path d="M2 17h5.5a3.5 3.5 0 000-7H2v7zM2 10V3h4.5a3.5 3.5 0 010 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel">
+                        </div>
+                        <div class="form-group">
+                            <label for="project">Project Type</label>
+                            <select id="project" name="project">
+                                <option value="">Select a project type</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="interior">Interior Design</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-group--full">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg viewBox="0 0 120 32" class="footer-logo" aria-label="KAAF">
+                        <path d="M0 0h6v14h2L16 0h8l-10 16 10 16h-8l-8-14H6v14H0V0zM28 0h6v6h8v6h-8v14h8v6h-14V0zM54 0h6v6h8v6h-8v14h8v6h-14V0zM80 0h14v6h-8v6h8v20h-6V12h-2v20h-6V0z" fill="currentColor"/>
+                    </svg>
+                    <p>Karim Alaa Architectural Firm</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KAAF. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>

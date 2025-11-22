@@ -14,8 +14,8 @@
     <header class="header scrolled" id="header">
         <div class="container">
             <a href="../index.html" class="logo" aria-label="KAAF Home">
-                <svg viewBox="0 0 200 50" class="logo-svg" aria-hidden="true">
-                    <path d="M0 0h8v20h4v-8l12-12h12l-16 16 16 20h-12l-12-14h-4v14h-8v-36z M44 0h8v8h12v8h-12v12h12v8h-20v-36z M76 0h8v8h12v8h-12v12h12v8h-20v-36z M108 0h20v8h-12v6h12v8h-12v14h-8v-36z" fill="currentColor"/>
+                <svg viewBox="0 0 350 80" class="logo-svg" aria-hidden="true">
+                    <path d="M0 0h20v35h5V20l5-5V0h20v15l-5 5v10h5l20 25v25h-25l-15-20h-5v20H0V0z M95 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M180 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M265 0h75v20h-55v10h40v20h-40v30h-20V0z" fill="currentColor"/>
                 </svg>
             </a>
             <nav class="nav" id="nav">
@@ -89,43 +89,25 @@
 
                     <div class="pdf-section">
                         <h3>Project Documentation</h3>
-                        <p style="color: var(--color-gray); margin-bottom: var(--space-md);">Download the complete project documentation and drawings</p>
+                        <p style="color: var(--color-gray); margin-bottom: var(--space-md);">View or download the complete project documentation and drawings</p>
+                        <div class="pdf-tabs">
+                            <button class="pdf-tab active" data-pdf="../19-3 3.pdf">Sheet 3</button>
+                            <button class="pdf-tab" data-pdf="../19-3 4.pdf">Sheet 4</button>
+                            <button class="pdf-tab" data-pdf="../19-3 5.pdf">Sheet 5</button>
+                            <button class="pdf-tab" data-pdf="../19-3 6.pdf">Sheet 6</button>
+                        </div>
+                        <div class="pdf-preview-container">
+                            <iframe src="../19-3 3.pdf" class="pdf-preview" id="pdfPreview" title="Project Documentation PDF"></iframe>
+                        </div>
                         <div class="pdf-downloads">
-                            <a href="../19-3 3.pdf" class="pdf-link" target="_blank">
+                            <a href="../19-3 3.pdf" class="pdf-link" download>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
                                     <polyline points="14,2 14,8 20,8"/>
                                     <line x1="12" y1="18" x2="12" y2="12"/>
                                     <polyline points="9,15 12,18 15,15"/>
                                 </svg>
-                                Sheet 3
-                            </a>
-                            <a href="../19-3 4.pdf" class="pdf-link" target="_blank">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                                    <polyline points="14,2 14,8 20,8"/>
-                                    <line x1="12" y1="18" x2="12" y2="12"/>
-                                    <polyline points="9,15 12,18 15,15"/>
-                                </svg>
-                                Sheet 4
-                            </a>
-                            <a href="../19-3 5.pdf" class="pdf-link" target="_blank">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                                    <polyline points="14,2 14,8 20,8"/>
-                                    <line x1="12" y1="18" x2="12" y2="12"/>
-                                    <polyline points="9,15 12,18 15,15"/>
-                                </svg>
-                                Sheet 5
-                            </a>
-                            <a href="../19-3 6.pdf" class="pdf-link" target="_blank">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                                    <polyline points="14,2 14,8 20,8"/>
-                                    <line x1="12" y1="18" x2="12" y2="12"/>
-                                    <polyline points="9,15 12,18 15,15"/>
-                                </svg>
-                                Sheet 6
+                                Download All
                             </a>
                         </div>
                     </div>
@@ -139,8 +121,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <svg viewBox="0 0 200 50" class="footer-logo" aria-label="KAAF">
-                        <path d="M0 0h8v20h4v-8l12-12h12l-16 16 16 20h-12l-12-14h-4v14h-8v-36z M44 0h8v8h12v8h-12v12h12v8h-20v-36z M76 0h8v8h12v8h-12v12h12v8h-20v-36z M108 0h20v8h-12v6h12v8h-12v14h-8v-36z" fill="currentColor"/>
+                    <svg viewBox="0 0 350 80" class="footer-logo" aria-label="KAAF">
+                        <path d="M0 0h20v35h5V20l5-5V0h20v15l-5 5v10h5l20 25v25h-25l-15-20h-5v20H0V0z M95 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M180 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M265 0h75v20h-55v10h40v20h-40v30h-20V0z" fill="currentColor"/>
                     </svg>
                     <p>Karim Alaa Architectural Firm</p>
                 </div>

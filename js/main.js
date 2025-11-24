@@ -381,6 +381,80 @@
     }
 
     // --------------------------------------------------------------------------
+    // Hero Slider
+    // --------------------------------------------------------------------------
+    function initHeroSlider() {
+        const sliderTrack = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.slider-slide');
+        const prevBtn = document.getElementById('sliderPrev');
+        const nextBtn = document.getElementById('sliderNext');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        if (!sliderTrack || !slides.length) return;
+
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function updateSlider() {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Add active class to current slide and dot
+            slides[currentSlide].classList.add('active');
+            if (dots[currentSlide]) {
+                dots[currentSlide].classList.add('active');
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Event listeners
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto-play slider
+        let autoplayInterval = setInterval(nextSlide, 5000);
+
+        // Pause autoplay on hover
+        sliderTrack.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        sliderTrack.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+    }
+
+    // --------------------------------------------------------------------------
     // Initialize
     // --------------------------------------------------------------------------
     function init() {
@@ -396,6 +470,7 @@
         initActiveNavLink();
         initMagneticButtons();
         initPdfTabs();
+        initHeroSlider();
     }
 
     // Run on DOM ready

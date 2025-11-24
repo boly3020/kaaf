@@ -18,130 +18,265 @@
                     <path d="M0 0h20v35h5V20l5-5V0h20v15l-5 5v10h5l20 25v25h-25l-15-20h-5v20H0V0z M95 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M180 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M265 0h75v20h-55v10h40v20h-40v30h-20V0z" fill="currentColor"/>
                 </svg>
             </a>
-            <nav class="nav" id="nav">
-                <ul class="nav-list">
-                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
-                    <li><a href="../index.html#about" class="nav-link">About</a></li>
-                    <li><a href="../index.html#services" class="nav-link">Services</a></li>
-                    <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
-                    <li><a href="../index.html#contact" class="nav-link nav-link--cta">Contact</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <main>
-        <!-- Project Hero -->
-        <section class="project-hero">
-            <div class="project-hero-image">
-                <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1600&q=80" alt="Al-Shorouk Development">
+    <!-- Back Button -->
+    <a href="../index.html#projects" class="project-back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Projects
+    </a>
+
+    <!-- Full-Screen Gallery Hero -->
+    <section class="project-gallery-hero" id="projectGalleryHero">
+        <div class="project-gallery-slide active">
+            <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1920&q=90" alt="Al-Shorouk Development View 1">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90" alt="Al-Shorouk Development View 2">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=90" alt="Al-Shorouk Development View 3">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1920&q=90" alt="Al-Shorouk Development View 4">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90" alt="Al-Shorouk Development View 5">
+        </div>
+    </section>
+
+    <!-- Gallery Navigation -->
+    <div class="gallery-nav">
+        <button class="gallery-nav-btn" id="galleryPrev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <div class="gallery-counter">
+            <span id="galleryCounter">1 / 5</span>
+        </div>
+        <button class="gallery-nav-btn" id="galleryNext" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Info Toggle Button -->
+    <button class="project-info-toggle" id="infoToggle" aria-label="Toggle project info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+    </button>
+
+    <!-- Floating Sidebar -->
+    <aside class="project-info-sidebar" id="projectInfoSidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+
+        <span class="sidebar-category">Residential Complex</span>
+        <h1 class="sidebar-title">Al-Shorouk Development</h1>
+
+        <p class="sidebar-description">
+            Al-Shorouk Development represents a harmonious blend of modern architecture and traditional Egyptian design elements. This residential complex features spacious apartments, landscaped gardens, and community spaces designed to foster a sense of neighborhood while providing privacy and comfort.
+        </p>
+
+        <div class="sidebar-specs">
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Location</span>
+                <span class="sidebar-spec-value">Cairo, Egypt</span>
             </div>
-            <div class="project-hero-overlay"></div>
-            <div class="project-hero-content container">
-                <span class="project-category">Residential Complex</span>
-                <h1 class="project-title">Al-Shorouk Development</h1>
-                <p class="project-location">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    Cairo, Egypt
-                </p>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Year</span>
+                <span class="sidebar-spec-value">2024</span>
             </div>
-        </section>
-
-        <!-- Project Content -->
-        <section class="project-content">
-            <div class="container">
-                <a href="../index.html#projects" class="back-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    Back to Projects
-                </a>
-
-                <div class="project-details">
-                    <p class="project-description">
-                        Al-Shorouk Development represents a harmonious blend of modern architecture and traditional Egyptian design elements. This residential complex features spacious apartments, landscaped gardens, and community spaces designed to foster a sense of neighborhood while providing privacy and comfort.
-                    </p>
-                    <p class="project-description">
-                        The project incorporates sustainable design principles, including natural ventilation systems, solar orientation for optimal daylight, and water-efficient landscaping. Each unit is thoughtfully designed to maximize living space while maintaining a connection to the surrounding environment.
-                    </p>
-
-                    <div class="project-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">Year</div>
-                            <div class="spec-value">2024</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Type</div>
-                            <div class="spec-value">Residential</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Status</div>
-                            <div class="spec-value">Completed</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Location</div>
-                            <div class="spec-value">Cairo</div>
-                        </div>
-                    </div>
-
-                    <div class="pdf-section">
-                        <h3>Project Documentation</h3>
-                        <p style="color: var(--color-gray); margin-bottom: var(--space-md);">View or download the complete project documentation and drawings</p>
-                        <div class="pdf-preview-container">
-                            <iframe src="../الشروق.pdf" class="pdf-preview" title="Project Documentation PDF"></iframe>
-                        </div>
-                        <div class="pdf-downloads">
-                            <a href="../الشروق.pdf" class="pdf-link" download>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                                    <polyline points="14,2 14,8 20,8"/>
-                                    <line x1="12" y1="18" x2="12" y2="12"/>
-                                    <polyline points="9,15 12,18 15,15"/>
-                                </svg>
-                                Download PDF
-                            </a>
-                            <a href="../الشروق.pdf" class="pdf-link" target="_blank">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                                    <polyline points="15,3 21,3 21,9"/>
-                                    <line x1="10" y1="14" x2="21" y2="3"/>
-                                </svg>
-                                Open in New Tab
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Type</span>
+                <span class="sidebar-spec-value">Residential</span>
             </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <svg viewBox="0 0 350 80" class="footer-logo" aria-label="KAAF">
-                        <path d="M0 0h20v35h5V20l5-5V0h20v15l-5 5v10h5l20 25v25h-25l-15-20h-5v20H0V0z M95 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M180 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M265 0h75v20h-55v10h40v20h-40v30h-20V0z" fill="currentColor"/>
-                    </svg>
-                    <p>Karim Alaa Architectural Firm</p>
-                </div>
-                <div class="footer-links">
-                    <a href="../index.html#home">Home</a>
-                    <a href="../index.html#about">About</a>
-                    <a href="../index.html#services">Services</a>
-                    <a href="../index.html#projects">Projects</a>
-                    <a href="../index.html#contact">Contact</a>
-                </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Status</span>
+                <span class="sidebar-spec-value">Completed</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 KAAF. All rights reserved.</p>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Area</span>
+                <span class="sidebar-spec-value">12,000 m²</span>
+            </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Units</span>
+                <span class="sidebar-spec-value">80 Apartments</span>
             </div>
         </div>
-    </footer>
+
+        <div class="sidebar-actions">
+            <a href="../الشروق.pdf" class="sidebar-btn" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                </svg>
+                View Documentation
+            </a>
+            <a href="../الشروق.pdf" class="sidebar-btn" download>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PDF
+            </a>
+            <a href="../index.html#contact" class="sidebar-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Inquire About This Project
+            </a>
+        </div>
+    </aside>
+
+    <!-- Grid Gallery Section -->
+    <section class="project-grid-gallery">
+        <div class="grid-gallery">
+            <div class="grid-gallery-item" data-index="0">
+                <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80" alt="Gallery Image 1">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="1">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Gallery Image 2">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="2">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Gallery Image 3">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="3">
+                <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80" alt="Gallery Image 4">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="4">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Gallery Image 5">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="0">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Gallery Image 6">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="../js/main.js" defer></script>
+    <script>
+        // Project Gallery Functionality
+        (function() {
+            const slides = document.querySelectorAll('.project-gallery-slide');
+            const prevBtn = document.getElementById('galleryPrev');
+            const nextBtn = document.getElementById('galleryNext');
+            const counter = document.getElementById('galleryCounter');
+            const infoToggle = document.getElementById('infoToggle');
+            const sidebar = document.getElementById('projectInfoSidebar');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const gridItems = document.querySelectorAll('.grid-gallery-item');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function updateGallery() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[currentSlide].classList.add('active');
+                counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateGallery();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateGallery();
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateGallery();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Info sidebar toggle
+            infoToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+
+            sidebarClose.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+
+            // Grid gallery items
+            gridItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const index = parseInt(item.getAttribute('data-index'));
+                    goToSlide(index);
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'Escape') sidebar.classList.remove('active');
+            });
+
+            // Auto-play
+            let autoplayInterval = setInterval(nextSlide, 5000);
+
+            // Pause on sidebar open
+            infoToggle.addEventListener('click', () => clearInterval(autoplayInterval));
+            sidebarClose.addEventListener('click', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+        })();
+    </script>
 </body>
 </html>

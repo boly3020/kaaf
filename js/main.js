@@ -381,19 +381,59 @@
     }
 
     // --------------------------------------------------------------------------
-    // Hero Slider
+    // Hero Cinematic Slider
     // --------------------------------------------------------------------------
     function initHeroSlider() {
-        const sliderTrack = document.getElementById('sliderTrack');
-        const slides = document.querySelectorAll('.slider-slide');
+        const sliderBg = document.getElementById('heroSliderBg');
+        const slides = document.querySelectorAll('.hero-slider-bg .slider-slide');
+        const projectInfo = document.getElementById('heroProjectInfo');
         const prevBtn = document.getElementById('sliderPrev');
         const nextBtn = document.getElementById('sliderNext');
         const dots = document.querySelectorAll('.slider-dot');
 
-        if (!sliderTrack || !slides.length) return;
+        if (!sliderBg || !slides.length) return;
+
+        // Project data
+        const projects = [
+            {
+                category: 'Residential Complex',
+                title: 'Al-Shorouk Development',
+                location: 'Cairo, Egypt'
+            },
+            {
+                category: 'Commercial',
+                title: 'Project 19-3',
+                location: 'New Cairo, Egypt'
+            },
+            {
+                category: 'Residential',
+                title: 'Project 2',
+                location: 'Alexandria, Egypt'
+            }
+        ];
 
         let currentSlide = 0;
         const totalSlides = slides.length;
+
+        function updateProjectInfo() {
+            if (!projectInfo) return;
+
+            const project = projects[currentSlide];
+
+            // Add fade out effect
+            projectInfo.style.opacity = '0';
+            projectInfo.style.transform = 'translateX(-30px)';
+
+            setTimeout(() => {
+                projectInfo.querySelector('.project-category').textContent = project.category;
+                projectInfo.querySelector('h3').textContent = project.title;
+                projectInfo.querySelector('p').lastChild.textContent = project.location;
+
+                // Fade in
+                projectInfo.style.opacity = '1';
+                projectInfo.style.transform = 'translateX(0)';
+            }, 300);
+        }
 
         function updateSlider() {
             // Remove active class from all slides and dots
@@ -405,6 +445,9 @@
             if (dots[currentSlide]) {
                 dots[currentSlide].classList.add('active');
             }
+
+            // Update project info
+            updateProjectInfo();
         }
 
         function nextSlide() {
@@ -436,16 +479,19 @@
         });
 
         // Auto-play slider
-        let autoplayInterval = setInterval(nextSlide, 5000);
+        let autoplayInterval = setInterval(nextSlide, 6000);
 
-        // Pause autoplay on hover
-        sliderTrack.addEventListener('mouseenter', () => {
-            clearInterval(autoplayInterval);
-        });
+        // Pause autoplay on hero hover
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.addEventListener('mouseenter', () => {
+                clearInterval(autoplayInterval);
+            });
 
-        sliderTrack.addEventListener('mouseleave', () => {
-            autoplayInterval = setInterval(nextSlide, 5000);
-        });
+            hero.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(nextSlide, 6000);
+            });
+        }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {

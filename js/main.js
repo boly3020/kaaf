@@ -396,19 +396,19 @@
         // Project data
         const projects = [
             {
-                category: 'Residential Complex',
-                title: 'Al-Shorouk Development',
-                location: 'Cairo, Egypt'
-            },
-            {
-                category: 'Commercial',
-                title: 'Project 19-3',
+                category: 'Residential Villa',
+                title: 'Luxury Residential Villa',
                 location: 'New Cairo, Egypt'
             },
             {
-                category: 'Residential',
-                title: 'Project 2',
-                location: 'Alexandria, Egypt'
+                category: 'Commercial Interior',
+                title: 'Contemporary Café Design',
+                location: 'New Cairo, Egypt'
+            },
+            {
+                category: 'Residential Interior',
+                title: 'Modern Living Space',
+                location: 'New Cairo, Egypt'
             }
         ];
 

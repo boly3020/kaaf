@@ -6,140 +6,296 @@
     <meta name="description" content="Contemporary Café Design - A modern commercial interior project by KAAF">
     <title>Contemporary Café Design | KAAF</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css?v=2">
+    <link rel="icon" type="image/svg+xml" href="../assets/KAAF-Final-Logo.svg">
 </head>
 <body class="project-page">
     <!-- Header -->
     <header class="header scrolled" id="header">
         <div class="container">
             <a href="../index.html" class="logo" aria-label="KAAF Home">
-                <svg viewBox="0 0 350 80" class="logo-svg" aria-hidden="true">
-                    <path d="M0 0h20v35h5V20l5-5V0h20v15l-5 5v10h5l20 25v25h-25l-15-20h-5v20H0V0z M95 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M180 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M265 0h75v20h-55v10h40v20h-40v30h-20V0z" fill="currentColor"/>
-                </svg>
+                <img src="../assets/KAAF-Final-Logo.svg" alt="KAAF Logo" class="logo-svg">
             </a>
-            <nav class="nav" id="nav">
-                <ul class="nav-list">
-                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
-                    <li><a href="../index.html#about" class="nav-link">About</a></li>
-                    <li><a href="../index.html#services" class="nav-link">Services</a></li>
-                    <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
-                    <li><a href="../index.html#contact" class="nav-link nav-link--cta">Contact</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <main>
-        <!-- Project Hero -->
-        <section class="project-hero">
-            <div class="project-hero-image">
-                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (1).jpeg" alt="Contemporary Café Design">
+    <!-- Back Button -->
+    <a href="../index.html#projects" class="project-back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Projects
+    </a>
+
+    <!-- Full-Screen Gallery Hero -->
+    <section class="project-gallery-hero" id="projectGalleryHero">
+        <div class="project-gallery-slide active">
+            <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (1).jpeg" alt="Contemporary Café Interior View 1">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (2).jpeg" alt="Contemporary Café Interior View 2">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (3).jpeg" alt="Contemporary Café Interior View 3">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (4).jpeg" alt="Contemporary Café Interior View 4">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (5).jpeg" alt="Contemporary Café Interior View 5">
+        </div>
+        <div class="project-gallery-slide">
+            <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (6).jpeg" alt="Contemporary Café Interior View 6">
+        </div>
+    </section>
+
+    <!-- Gallery Navigation -->
+    <div class="gallery-nav">
+        <button class="gallery-nav-btn" id="galleryPrev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <div class="gallery-counter">
+            <span id="galleryCounter">1 / 6</span>
+        </div>
+        <button class="gallery-nav-btn" id="galleryNext" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Info Toggle Button -->
+    <button class="project-info-toggle" id="infoToggle" aria-label="Toggle project info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+    </button>
+
+    <!-- Floating Sidebar -->
+    <aside class="project-info-sidebar" id="projectInfoSidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+
+        <span class="sidebar-category">Commercial Interior</span>
+        <h1 class="sidebar-title">Contemporary Café Design</h1>
+
+        <p class="sidebar-description">
+            A sophisticated café interior that blends contemporary design with warm, inviting atmosphere. Featuring elegant material selections, custom millwork, and carefully curated lighting to create a memorable dining experience that celebrates both tradition and innovation.
+        </p>
+
+        <div class="sidebar-specs">
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Location</span>
+                <span class="sidebar-spec-value">New Cairo, Egypt</span>
             </div>
-            <div class="project-hero-overlay"></div>
-            <div class="project-hero-content container">
-                <span class="project-category">Commercial Interior</span>
-                <h1 class="project-title">Contemporary Café Design</h1>
-                <p class="project-location">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    New Cairo, Egypt
-                </p>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Year</span>
+                <span class="sidebar-spec-value">2025</span>
             </div>
-        </section>
-
-        <!-- Project Content -->
-        <section class="project-content">
-            <div class="container">
-                <a href="../index.html#projects" class="back-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    Back to Projects
-                </a>
-
-                <div class="project-details">
-                    <p class="project-description">
-                        A sophisticated café interior that blends contemporary design with warm, inviting atmosphere. Featuring elegant material selections, custom millwork, and carefully curated lighting to create a memorable dining experience.
-                    </p>
-                    <p class="project-description">
-                        The design incorporates cultural motifs with modern sensibilities, creating a unique space that celebrates both tradition and innovation. Every detail has been thoughtfully considered to enhance the customer experience.
-                    </p>
-
-                    <div class="project-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">Year</div>
-                            <div class="spec-value">2025</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Type</div>
-                            <div class="spec-value">Commercial Interior</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Status</div>
-                            <div class="spec-value">Design Development</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Location</div>
-                            <div class="spec-value">New Cairo</div>
-                        </div>
-                    </div>
-
-                    <div class="pdf-section">
-                        <h3>Project Documentation</h3>
-                        <p style="color: var(--color-gray); margin-bottom: var(--space-md);">View or download the complete project documentation and drawings</p>
-                        <div class="pdf-tabs">
-                            <button class="pdf-tab active" data-pdf="../19-3 3.pdf">Sheet 3</button>
-                            <button class="pdf-tab" data-pdf="../19-3 4.pdf">Sheet 4</button>
-                            <button class="pdf-tab" data-pdf="../19-3 5.pdf">Sheet 5</button>
-                            <button class="pdf-tab" data-pdf="../19-3 6.pdf">Sheet 6</button>
-                        </div>
-                        <div class="pdf-preview-container">
-                            <iframe src="../19-3 3.pdf" class="pdf-preview" id="pdfPreview" title="Project Documentation PDF"></iframe>
-                        </div>
-                        <div class="pdf-downloads">
-                            <a href="../19-3 3.pdf" class="pdf-link" download>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                                    <polyline points="14,2 14,8 20,8"/>
-                                    <line x1="12" y1="18" x2="12" y2="12"/>
-                                    <polyline points="9,15 12,18 15,15"/>
-                                </svg>
-                                Download All
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Type</span>
+                <span class="sidebar-spec-value">Commercial Interior</span>
             </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <svg viewBox="0 0 350 80" class="footer-logo" aria-label="KAAF">
-                        <path d="M0 0h20v35h5V20l5-5V0h20v15l-5 5v10h5l20 25v25h-25l-15-20h-5v20H0V0z M95 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M180 0h20v15h25v20h-25v10h25v20h10V0h20v80h-55V65h-20V0z M265 0h75v20h-55v10h40v20h-40v30h-20V0z" fill="currentColor"/>
-                    </svg>
-                    <p>Karim Alaa Architectural Firm</p>
-                </div>
-                <div class="footer-links">
-                    <a href="../index.html#home">Home</a>
-                    <a href="../index.html#about">About</a>
-                    <a href="../index.html#services">Services</a>
-                    <a href="../index.html#projects">Projects</a>
-                    <a href="../index.html#contact">Contact</a>
-                </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Status</span>
+                <span class="sidebar-spec-value">Design Development</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 KAAF. All rights reserved.</p>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Area</span>
+                <span class="sidebar-spec-value">280 m²</span>
+            </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Capacity</span>
+                <span class="sidebar-spec-value">80 Seats</span>
             </div>
         </div>
-    </footer>
+
+        <div class="sidebar-actions">
+            <a href="../19-3 3.pdf" class="sidebar-btn" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                </svg>
+                View Documentation
+            </a>
+            <a href="../19-3 3.pdf" class="sidebar-btn" download>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PDF
+            </a>
+            <a href="../index.html#contact" class="sidebar-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Inquire About This Project
+            </a>
+        </div>
+    </aside>
+
+    <!-- Grid Gallery Section -->
+    <section class="project-grid-gallery">
+        <div class="grid-gallery">
+            <div class="grid-gallery-item" data-index="0">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (1).jpeg" alt="Gallery Image 1">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="1">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (2).jpeg" alt="Gallery Image 2">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="2">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (3).jpeg" alt="Gallery Image 3">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="3">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (4).jpeg" alt="Gallery Image 4">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="4">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (5).jpeg" alt="Gallery Image 5">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="5">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (6).jpeg" alt="Gallery Image 6">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="0">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (7).jpeg" alt="Gallery Image 7">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid-gallery-item" data-index="1">
+                <img src="../assets/WhatsApp Image 2025-12-09 at 11.40.46 AM (8).jpeg" alt="Gallery Image 8">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="../js/main.js" defer></script>
+    <script>
+        // Project Gallery Functionality
+        (function() {
+            const slides = document.querySelectorAll('.project-gallery-slide');
+            const prevBtn = document.getElementById('galleryPrev');
+            const nextBtn = document.getElementById('galleryNext');
+            const counter = document.getElementById('galleryCounter');
+            const infoToggle = document.getElementById('infoToggle');
+            const sidebar = document.getElementById('projectInfoSidebar');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const gridItems = document.querySelectorAll('.grid-gallery-item');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function updateGallery() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[currentSlide].classList.add('active');
+                counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateGallery();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateGallery();
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateGallery();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Info sidebar toggle
+            infoToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+
+            sidebarClose.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+
+            // Grid gallery items
+            gridItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const index = parseInt(item.getAttribute('data-index'));
+                    goToSlide(index);
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'Escape') sidebar.classList.remove('active');
+            });
+
+            // Auto-play
+            let autoplayInterval = setInterval(nextSlide, 5000);
+
+            // Pause on sidebar open
+            infoToggle.addEventListener('click', () => clearInterval(autoplayInterval));
+            sidebarClose.addEventListener('click', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+        })();
+    </script>
 </body>
 </html>

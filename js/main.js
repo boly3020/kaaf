@@ -12,7 +12,6 @@
     const nav = document.getElementById('nav');
     const navLinks = document.querySelectorAll('.nav-link');
     const loader = document.getElementById('loader');
-    const cursorFollower = document.querySelector('.cursor-follower');
 
     // --------------------------------------------------------------------------
     // Loading Screen
@@ -31,44 +30,7 @@
         document.body.style.overflow = 'hidden';
     }
 
-    // --------------------------------------------------------------------------
-    // Custom Cursor
-    // --------------------------------------------------------------------------
-    function initCursor() {
-        if (!cursorFollower || window.matchMedia('(hover: none)').matches) return;
-
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            const dx = mouseX - cursorX;
-            const dy = mouseY - cursorY;
-
-            cursorX += dx * 0.15;
-            cursorY += dy * 0.15;
-
-            cursorFollower.style.left = cursorX + 'px';
-            cursorFollower.style.top = cursorY + 'px';
-
-            requestAnimationFrame(animateCursor);
-        }
-
-        animateCursor();
-
-        // Hover effects
-        const hoverElements = document.querySelectorAll('a, button, .project-card, .service-card');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursorFollower.classList.add('active'));
-            el.addEventListener('mouseleave', () => cursorFollower.classList.remove('active'));
-        });
-    }
+    // Custom cursor removed
 
     // --------------------------------------------------------------------------
     // Mobile Navigation
@@ -505,7 +467,6 @@
     // --------------------------------------------------------------------------
     function init() {
         initLoader();
-        initCursor();
         initNavigation();
         initHeaderScroll();
         initSmoothScroll();

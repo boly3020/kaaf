@@ -1,0 +1,221 @@
+<% if (success) { %>
+<div class="alert alert-success">Settings saved successfully!</div>
+<% } %>
+
+<form action="/admin/settings" method="POST" enctype="multipart/form-data" class="admin-form">
+
+    <div class="form-section">
+        <h2>General</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="siteName">Site Name</label>
+                <input type="text" id="siteName" name="siteName" value="<%= settings.siteName %>">
+            </div>
+            <div class="form-group">
+                <label for="siteTagline">Tagline</label>
+                <input type="text" id="siteTagline" name="siteTagline" value="<%= settings.siteTagline %>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="siteDescription">Site Description (SEO)</label>
+            <textarea id="siteDescription" name="siteDescription" rows="2"><%= settings.siteDescription %></textarea>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Hero Section</h2>
+        <div class="form-group">
+            <label for="heroBadge">Badge Text</label>
+            <input type="text" id="heroBadge" name="heroBadge" value="<%= settings.heroBadge %>">
+        </div>
+        <div class="form-group">
+            <label for="heroSubtitle">Hero Subtitle</label>
+            <textarea id="heroSubtitle" name="heroSubtitle" rows="2"><%= settings.heroSubtitle %></textarea>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>About Section (Homepage)</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="aboutTagline">Tagline</label>
+                <input type="text" id="aboutTagline" name="aboutTagline" value="<%= settings.aboutTagline %>">
+            </div>
+            <div class="form-group">
+                <label for="aboutTitle">Title (HTML allowed)</label>
+                <input type="text" id="aboutTitle" name="aboutTitle" value="<%= settings.aboutTitle %>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="aboutLead">Lead Paragraph</label>
+            <textarea id="aboutLead" name="aboutLead" rows="2"><%= settings.aboutLead %></textarea>
+        </div>
+        <div class="form-group">
+            <label for="aboutText">Body Text</label>
+            <textarea id="aboutText" name="aboutText" rows="3"><%= settings.aboutText %></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>About Image 1</label>
+                <input type="file" name="aboutImage1File" accept="image/*">
+                <% if (settings.aboutImage1) { %>
+                <div class="current-image small"><img src="<%= settings.aboutImage1 %>" alt="About image 1"></div>
+                <% } %>
+            </div>
+            <div class="form-group">
+                <label>About Image 2</label>
+                <input type="file" name="aboutImage2File" accept="image/*">
+                <% if (settings.aboutImage2) { %>
+                <div class="current-image small"><img src="<%= settings.aboutImage2 %>" alt="About image 2"></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Statistics</h2>
+        <div class="form-row three-col">
+            <div class="form-group">
+                <label for="statsProjects">Projects Count</label>
+                <input type="number" id="statsProjects" name="statsProjects" value="<%= settings.statsProjects %>">
+                <input type="text" name="statsProjectsLabel" value="<%= settings.statsProjectsLabel %>" placeholder="Label">
+            </div>
+            <div class="form-group">
+                <label for="statsAwards">Awards Count</label>
+                <input type="number" id="statsAwards" name="statsAwards" value="<%= settings.statsAwards %>">
+                <input type="text" name="statsAwardsLabel" value="<%= settings.statsAwardsLabel %>" placeholder="Label">
+            </div>
+            <div class="form-group">
+                <label for="statsYears">Years Count</label>
+                <input type="number" id="statsYears" name="statsYears" value="<%= settings.statsYears %>">
+                <input type="text" name="statsYearsLabel" value="<%= settings.statsYearsLabel %>" placeholder="Label">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>About Page</h2>
+        <div class="form-group">
+            <label for="aboutPageTitle">Page Title</label>
+            <input type="text" id="aboutPageTitle" name="aboutPageTitle" value="<%= settings.aboutPageTitle %>">
+        </div>
+        <div class="form-group">
+            <label for="aboutPageSubtitle">Page Subtitle</label>
+            <textarea id="aboutPageSubtitle" name="aboutPageSubtitle" rows="2"><%= settings.aboutPageSubtitle %></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="vision">Vision</label>
+                <textarea id="vision" name="vision" rows="3"><%= settings.vision %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="mission">Mission</label>
+                <textarea id="mission" name="mission" rows="3"><%= settings.mission %></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Core Values</h2>
+        <div id="valuesContainer">
+            <% if (settings.coreValues && settings.coreValues.length > 0) { %>
+                <% settings.coreValues.forEach(function(val, i) { %>
+                <div class="repeater-row">
+                    <input type="text" name="valueTitle" value="<%= val.title %>" placeholder="Value title">
+                    <input type="text" name="valueDesc" value="<%= val.description %>" placeholder="Description">
+                    <button type="button" class="btn-remove" onclick="this.parentElement.remove()">x</button>
+                </div>
+                <% }); %>
+            <% } %>
+        </div>
+        <button type="button" class="btn-admin-secondary" onclick="addRepeaterRow('valuesContainer', 'valueTitle', 'valueDesc', 'Value title', 'Description')">+ Add Value</button>
+    </div>
+
+    <div class="form-section">
+        <h2>Process Steps</h2>
+        <div id="stepsContainer">
+            <% if (settings.processSteps && settings.processSteps.length > 0) { %>
+                <% settings.processSteps.forEach(function(step, i) { %>
+                <div class="repeater-row">
+                    <input type="text" name="stepTitle" value="<%= step.title %>" placeholder="Step title">
+                    <input type="text" name="stepDesc" value="<%= step.description %>" placeholder="Description">
+                    <button type="button" class="btn-remove" onclick="this.parentElement.remove()">x</button>
+                </div>
+                <% }); %>
+            <% } %>
+        </div>
+        <button type="button" class="btn-admin-secondary" onclick="addRepeaterRow('stepsContainer', 'stepTitle', 'stepDesc', 'Step title', 'Description')">+ Add Step</button>
+    </div>
+
+    <div class="form-section">
+        <h2>Contact Information</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<%= settings.email %>">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" value="<%= settings.phone %>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address (HTML allowed)</label>
+            <input type="text" id="address" name="address" value="<%= settings.address %>">
+        </div>
+        <div class="form-group">
+            <label for="contactTitle">Contact Section Title (HTML allowed)</label>
+            <input type="text" id="contactTitle" name="contactTitle" value="<%= settings.contactTitle %>">
+        </div>
+        <div class="form-group">
+            <label for="contactDesc">Contact Description</label>
+            <textarea id="contactDesc" name="contactDesc" rows="2"><%= settings.contactDesc %></textarea>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Social Links</h2>
+        <div class="form-row three-col">
+            <div class="form-group">
+                <label for="instagram">Instagram URL</label>
+                <input type="text" id="instagram" name="instagram" value="<%= settings.instagram %>">
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn URL</label>
+                <input type="text" id="linkedin" name="linkedin" value="<%= settings.linkedin %>">
+            </div>
+            <div class="form-group">
+                <label for="behance">Behance URL</label>
+                <input type="text" id="behance" name="behance" value="<%= settings.behance %>">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>CTA & Footer</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="ctaTitle">CTA Title</label>
+                <input type="text" id="ctaTitle" name="ctaTitle" value="<%= settings.ctaTitle %>">
+            </div>
+            <div class="form-group">
+                <label for="ctaText">CTA Text</label>
+                <input type="text" id="ctaText" name="ctaText" value="<%= settings.ctaText %>">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="footerText">Footer Text</label>
+                <input type="text" id="footerText" name="footerText" value="<%= settings.footerText %>">
+            </div>
+            <div class="form-group">
+                <label for="copyrightYear">Copyright Year</label>
+                <input type="text" id="copyrightYear" name="copyrightYear" value="<%= settings.copyrightYear %>">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-admin-primary">Save Settings</button>
+    </div>
+</form>

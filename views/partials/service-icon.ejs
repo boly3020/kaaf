@@ -1,0 +1,33 @@
+<% if (icon === 'architectural') { %>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M21 7l-9-4-9 4"/>
+</svg>
+<% } else if (icon === 'interior') { %>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+</svg>
+<% } else if (icon === 'urban') { %>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M9 17H5a2 2 0 00-2 2 2 2 0 002 2h14a2 2 0 002-2 2 2 0 00-2-2h-4M9 17v-5a2 2 0 012-2h2a2 2 0 012 2v5M9 17h6"/>
+</svg>
+<% } else if (icon === 'project-management') { %>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+    <polyline points="14,2 14,8 20,8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+</svg>
+<% } else if (icon === 'turnkey') { %>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+    <polyline points="14,2 14,8 20,8"/>
+</svg>
+<% } else if (icon === 'renovation') { %>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+</svg>
+<% } else { %>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M21 7l-9-4-9 4"/>
+</svg>
+<% } %>

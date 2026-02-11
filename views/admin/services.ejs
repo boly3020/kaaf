@@ -1,0 +1,43 @@
+<div class="page-actions">
+    <a href="/admin/services/new" class="btn-admin-primary">+ Add New Service</a>
+</div>
+
+<% if (services.length === 0) { %>
+<div class="empty-state-box">
+    <h3>No Services Yet</h3>
+    <p>Start by adding your first service.</p>
+    <a href="/admin/services/new" class="btn-admin-primary">Add Service</a>
+</div>
+<% } else { %>
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Page</th>
+                <th>Icon</th>
+                <th>Order</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% services.forEach(function(service) { %>
+            <tr>
+                <td><strong><%= service.title %></strong></td>
+                <td><span class="badge badge-info"><%= service.page %></span></td>
+                <td><%= service.icon %></td>
+                <td><%= service.order %></td>
+                <td><span class="badge <%= service.isActive ? 'badge-success' : 'badge-danger' %>"><%= service.isActive ? 'Active' : 'Inactive' %></span></td>
+                <td class="actions-cell">
+                    <a href="/admin/services/<%= service._id %>/edit" class="btn-sm btn-edit">Edit</a>
+                    <form action="/admin/services/<%= service._id %>?_method=DELETE" method="POST" class="inline-form" onsubmit="return confirm('Delete this service?')">
+                        <button type="submit" class="btn-sm btn-delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+<% } %>

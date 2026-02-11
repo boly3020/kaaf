@@ -1,0 +1,45 @@
+<div class="page-actions">
+    <a href="/admin/projects/new" class="btn-admin-primary">+ Add New Project</a>
+</div>
+
+<% if (projects.length === 0) { %>
+<div class="empty-state-box">
+    <h3>No Projects Yet</h3>
+    <p>Start by adding your first project.</p>
+    <a href="/admin/projects/new" class="btn-admin-primary">Add Project</a>
+</div>
+<% } else { %>
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Featured</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% projects.forEach(function(project) { %>
+            <tr>
+                <td><img src="<%= project.featuredImage %>" alt="<%= project.title %>" class="table-thumb"></td>
+                <td><strong><%= project.title %></strong></td>
+                <td><%= project.category %></td>
+                <td><%= project.location %></td>
+                <td><span class="badge <%= project.isFeatured ? 'badge-success' : 'badge-muted' %>"><%= project.isFeatured ? 'Yes' : 'No' %></span></td>
+                <td><span class="badge <%= project.isActive ? 'badge-success' : 'badge-danger' %>"><%= project.isActive ? 'Active' : 'Inactive' %></span></td>
+                <td class="actions-cell">
+                    <a href="/admin/projects/<%= project._id %>/edit" class="btn-sm btn-edit">Edit</a>
+                    <form action="/admin/projects/<%= project._id %>?_method=DELETE" method="POST" class="inline-form" onsubmit="return confirm('Delete this project?')">
+                        <button type="submit" class="btn-sm btn-delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+<% } %>

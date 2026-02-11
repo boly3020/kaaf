@@ -1,0 +1,34 @@
+<!-- Loading screen -->
+<% if (typeof page !== 'undefined' && page === 'home') { %>
+<div class="loader" id="loader">
+    <div class="loader-logo">
+        <img src="/assets/KAAF-Final-Logo.svg" alt="KAAF" class="logo-svg-loader">
+    </div>
+    <div class="loader-bar">
+        <div class="loader-progress"></div>
+    </div>
+</div>
+<% } %>
+
+<!-- Header -->
+<header class="header<%= (typeof page !== 'undefined' && page !== 'home') ? ' scrolled' : '' %>" id="header">
+    <div class="container">
+        <a href="/" class="logo" aria-label="KAAF Home">
+            <img src="/assets/KAAF-Final-Logo.svg" alt="KAAF Logo" class="logo-svg">
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
+
+        <nav class="nav" id="nav" aria-label="Main navigation">
+            <ul class="nav-list">
+                <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#home' : '' %>" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#services' : '#services' %>" class="nav-link">Services</a></li>
+                <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#projects' : '#projects' %>" class="nav-link">Projects</a></li>
+                <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#contact' : '#contact' %>" class="nav-link nav-link--cta">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

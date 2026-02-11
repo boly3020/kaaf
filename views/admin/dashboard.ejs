@@ -1,0 +1,88 @@
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-card-icon" style="background: rgba(196, 112, 60, 0.1); color: #c4703c;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="stat-card-info">
+            <h3><%= projectCount %></h3>
+            <p>Projects</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-card-icon" style="background: rgba(107, 124, 90, 0.1); color: #6b7c5a;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="stat-card-info">
+            <h3><%= serviceCount %></h3>
+            <p>Services</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-card-icon" style="background: rgba(196, 168, 130, 0.1); color: #c4a882;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="stat-card-info">
+            <h3><%= messageCount %></h3>
+            <p>Messages</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-card-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="stat-card-info">
+            <h3><%= unreadCount %></h3>
+            <p>Unread Messages</p>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h2>Recent Messages</h2>
+            <a href="/admin/messages" class="btn-link">View All</a>
+        </div>
+        <div class="card-body">
+            <% if (recentMessages.length === 0) { %>
+            <p class="empty-state">No messages yet</p>
+            <% } else { %>
+            <div class="message-list">
+                <% recentMessages.forEach(function(msg) { %>
+                <div class="message-item<%= !msg.isRead ? ' unread' : '' %>">
+                    <div class="message-header">
+                        <strong><%= msg.name %></strong>
+                        <span class="message-date"><%= msg.createdAt.toLocaleDateString() %></span>
+                    </div>
+                    <p class="message-preview"><%= msg.message.substring(0, 100) %><%= msg.message.length > 100 ? '...' : '' %></p>
+                </div>
+                <% }); %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h2>Recent Projects</h2>
+            <a href="/admin/projects" class="btn-link">View All</a>
+        </div>
+        <div class="card-body">
+            <% if (recentProjects.length === 0) { %>
+            <p class="empty-state">No projects yet. <a href="/admin/projects/new">Add one</a></p>
+            <% } else { %>
+            <div class="project-list">
+                <% recentProjects.forEach(function(proj) { %>
+                <div class="project-list-item">
+                    <img src="<%= proj.featuredImage %>" alt="<%= proj.title %>" class="project-thumb">
+                    <div>
+                        <strong><%= proj.title %></strong>
+                        <span><%= proj.category %></span>
+                    </div>
+                    <a href="/admin/projects/<%= proj._id %>/edit" class="btn-edit">Edit</a>
+                </div>
+                <% }); %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>

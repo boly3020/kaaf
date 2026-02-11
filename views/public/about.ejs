@@ -1,0 +1,125 @@
+<%- include('../partials/header') %>
+
+<main>
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <span class="section-tag">About KAAF</span>
+                <h1 class="about-hero-title"><%= settings.aboutPageTitle %></h1>
+                <p class="about-hero-subtitle"><%= settings.aboutPageSubtitle %></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="section">
+        <div class="container">
+            <div class="about-vision-grid">
+                <div class="about-vision-card">
+                    <div class="about-vision-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p><%= settings.vision %></p>
+                </div>
+                <div class="about-vision-card">
+                    <div class="about-vision-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p><%= settings.mission %></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section" style="background: var(--color-cream-dark);">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-tag">What Drives Us</span>
+                <h2 class="section-title">Core Values</h2>
+            </div>
+            <div class="values-grid">
+                <% if (settings.coreValues && settings.coreValues.length > 0) { %>
+                    <% settings.coreValues.forEach(function(value) { %>
+                    <div class="value-item">
+                        <h4><%= value.title %></h4>
+                        <p><%= value.description %></p>
+                    </div>
+                    <% }); %>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-tag">How We Work</span>
+                <h2 class="section-title">Our Design-Build Process</h2>
+                <p class="section-desc">A refined, design-led workflow that ensures clarity, efficiency, and exceptional quality from concept to completion.</p>
+            </div>
+            <div class="process-timeline">
+                <% if (settings.processSteps && settings.processSteps.length > 0) { %>
+                    <% settings.processSteps.forEach(function(step, i) { %>
+                    <div class="process-step">
+                        <div class="process-number"><%= String(i + 1).padStart(2, '0') %></div>
+                        <div class="process-content">
+                            <h3><%= step.title %></h3>
+                            <p><%= step.description %></p>
+                        </div>
+                    </div>
+                    <% }); %>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section" style="background: var(--color-cream-dark);">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Our Services</h2>
+            </div>
+            <div class="about-services-grid">
+                <% services.forEach(function(service) { %>
+                <div class="about-service-card">
+                    <div class="service-icon">
+                        <%- include('../partials/service-icon', { icon: service.icon }) %>
+                    </div>
+                    <h3><%= service.title %></h3>
+                    <p><%= service.description %></p>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="about-cta">
+                <h2><%= settings.ctaTitle %></h2>
+                <p><%= settings.ctaText %></p>
+                <a href="/#contact" class="btn btn-primary">
+                    <span>Start Your Project</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer') %>

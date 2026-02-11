@@ -21,11 +21,10 @@ const projectSchema = new mongoose.Schema({
     isActive: { type: Boolean, default: true }
 }, { timestamps: true });
 
-projectSchema.pre('save', function(next) {
+projectSchema.pre('save', function() {
     if (this.isModified('title')) {
         this.slug = slugify(this.title, { lower: true, strict: true });
     }
-    next();
 });
 
 module.exports = mongoose.model('Project', projectSchema);

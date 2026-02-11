@@ -1,0 +1,44 @@
+<% if (messages.length === 0) { %>
+<div class="empty-state-box">
+    <h3>No Messages Yet</h3>
+    <p>Contact form submissions will appear here.</p>
+</div>
+<% } else { %>
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Type</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% messages.forEach(function(msg) { %>
+            <tr class="<%= !msg.isRead ? 'row-unread' : '' %>">
+                <td><span class="badge <%= msg.isRead ? 'badge-muted' : 'badge-warning' %>"><%= msg.isRead ? 'Read' : 'New' %></span></td>
+                <td><strong><%= msg.name %></strong></td>
+                <td><a href="mailto:<%= msg.email %>"><%= msg.email %></a></td>
+                <td><%= msg.phone || '-' %></td>
+                <td><%= msg.projectType || '-' %></td>
+                <td class="message-cell"><%= msg.message.substring(0, 80) %><%= msg.message.length > 80 ? '...' : '' %></td>
+                <td><%= msg.createdAt.toLocaleDateString() %></td>
+                <td class="actions-cell">
+                    <% if (!msg.isRead) { %>
+                    <button class="btn-sm btn-edit" onclick="markAsRead('<%= msg._id %>', this)">Mark Read</button>
+                    <% } %>
+                    <form action="/admin/messages/<%= msg._id %>?_method=DELETE" method="POST" class="inline-form" onsubmit="return confirm('Delete this message?')">
+                        <button type="submit" class="btn-sm btn-delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+<% } %>

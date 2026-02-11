@@ -1,0 +1,126 @@
+<% const isEdit = project && project._id; %>
+
+<div class="form-page">
+    <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+    <% } %>
+
+    <form action="<%= isEdit ? '/admin/projects/' + project._id + '?_method=PUT' : '/admin/projects' %>" method="POST" enctype="multipart/form-data" class="admin-form">
+
+        <div class="form-section">
+            <h2>Basic Information</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="title">Project Title *</label>
+                    <input type="text" id="title" name="title" value="<%= project ? project.title : '' %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <input type="text" id="category" name="category" value="<%= project ? project.category : '' %>" required placeholder="e.g., Residential Villa">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" rows="4" required><%= project ? project.description : '' %></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Project Details</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="location">Location *</label>
+                    <input type="text" id="location" name="location" value="<%= project ? project.location : '' %>" required placeholder="e.g., New Cairo, Egypt">
+                </div>
+                <div class="form-group">
+                    <label for="year">Year *</label>
+                    <input type="text" id="year" name="year" value="<%= project ? project.year : '' %>" required placeholder="e.g., 2025">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="type">Type *</label>
+                    <input type="text" id="type" name="type" value="<%= project ? project.type : '' %>" required placeholder="e.g., Residential Villa">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <input type="text" id="status" name="status" value="<%= project ? project.status : 'Design Development' %>" placeholder="e.g., Design Development">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="area">Area</label>
+                    <input type="text" id="area" name="area" value="<%= project ? project.area : '' %>" placeholder="e.g., 450 m2">
+                </div>
+                <div class="form-group">
+                    <label for="floors">Floors</label>
+                    <input type="text" id="floors" name="floors" value="<%= project ? project.floors : '' %>" placeholder="e.g., 3 Floors + Basement">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="style">Style</label>
+                    <input type="text" id="style" name="style" value="<%= project ? project.style : '' %>" placeholder="e.g., Contemporary Minimalist">
+                </div>
+                <div class="form-group">
+                    <label for="order">Display Order</label>
+                    <input type="number" id="order" name="order" value="<%= project ? project.order : 0 %>">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Images</h2>
+            <div class="form-group">
+                <label for="featuredImage">Featured Image <%= isEdit ? '' : '*' %></label>
+                <input type="file" id="featuredImage" name="featuredImage" accept="image/*" <%= isEdit ? '' : 'required' %>>
+                <% if (isEdit && project.featuredImage) { %>
+                <div class="current-image">
+                    <img src="<%= project.featuredImage %>" alt="Current featured image">
+                    <span>Current featured image</span>
+                </div>
+                <% } %>
+            </div>
+            <div class="form-group">
+                <label for="galleryImages">Gallery Images (select multiple)</label>
+                <input type="file" id="galleryImages" name="galleryImages" accept="image/*" multiple>
+                <% if (isEdit && project.galleryImages && project.galleryImages.length > 0) { %>
+                <div class="gallery-preview">
+                    <% project.galleryImages.forEach(function(img) { %>
+                    <div class="gallery-thumb" data-project-id="<%= project._id %>" data-image="<%= img %>">
+                        <img src="<%= img %>" alt="Gallery image">
+                        <button type="button" class="remove-gallery-img" onclick="removeGalleryImage(this)">&times;</button>
+                    </div>
+                    <% }); %>
+                </div>
+                <% } %>
+            </div>
+            <div class="form-group">
+                <label for="pdfFile">PDF Documentation</label>
+                <input type="file" id="pdfFile" name="pdfFile" accept=".pdf">
+                <% if (isEdit && project.pdfFile) { %>
+                <p class="help-text">Current: <a href="<%= project.pdfFile %>" target="_blank">View PDF</a></p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Options</h2>
+            <div class="form-row">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="isFeatured" <%= project && project.isFeatured ? 'checked' : '' %>>
+                    Featured Project (larger card on homepage)
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="isActive" <%= !project || project.isActive !== false ? 'checked' : '' %>>
+                    Active (visible on website)
+                </label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin-primary"><%= isEdit ? 'Update Project' : 'Create Project' %></button>
+            <a href="/admin/projects" class="btn-admin-secondary">Cancel</a>
+        </div>
+    </form>
+</div>

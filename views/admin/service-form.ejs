@@ -1,0 +1,58 @@
+<% const isEdit = service && service._id; %>
+
+<div class="form-page">
+    <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+    <% } %>
+
+    <form action="<%= isEdit ? '/admin/services/' + service._id + '?_method=PUT' : '/admin/services' %>" method="POST" class="admin-form">
+
+        <div class="form-section">
+            <h2>Service Information</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="title">Service Title *</label>
+                    <input type="text" id="title" name="title" value="<%= service ? service.title : '' %>" required placeholder="e.g., Interior Design">
+                </div>
+                <div class="form-group">
+                    <label for="page">Display On *</label>
+                    <select id="page" name="page" required>
+                        <option value="home" <%= service && service.page === 'home' ? 'selected' : '' %>>Homepage</option>
+                        <option value="about" <%= service && service.page === 'about' ? 'selected' : '' %>>About Page</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" rows="3" required><%= service ? service.description : '' %></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="icon">Icon</label>
+                    <select id="icon" name="icon">
+                        <option value="architectural" <%= service && service.icon === 'architectural' ? 'selected' : '' %>>Architectural Design</option>
+                        <option value="interior" <%= service && service.icon === 'interior' ? 'selected' : '' %>>Interior Design</option>
+                        <option value="urban" <%= service && service.icon === 'urban' ? 'selected' : '' %>>Urban Planning</option>
+                        <option value="project-management" <%= service && service.icon === 'project-management' ? 'selected' : '' %>>Project Management</option>
+                        <option value="turnkey" <%= service && service.icon === 'turnkey' ? 'selected' : '' %>>Turnkey Solutions</option>
+                        <option value="renovation" <%= service && service.icon === 'renovation' ? 'selected' : '' %>>Renovation</option>
+                        <option value="default" <%= service && service.icon === 'default' ? 'selected' : '' %>>Default</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="order">Display Order</label>
+                    <input type="number" id="order" name="order" value="<%= service ? service.order : 0 %>">
+                </div>
+            </div>
+            <label class="checkbox-label">
+                <input type="checkbox" name="isActive" <%= !service || service.isActive !== false ? 'checked' : '' %>>
+                Active (visible on website)
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin-primary"><%= isEdit ? 'Update Service' : 'Create Service' %></button>
+            <a href="/admin/services" class="btn-admin-secondary">Cancel</a>
+        </div>
+    </form>
+</div>

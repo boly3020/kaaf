@@ -1,3 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+
+# Uploads (user-generated content)
+public/uploads/projects/*
+public/uploads/gallery/*
+!public/uploads/projects/.gitkeep
+!public/uploads/gallery/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+
 # LaTeX auxiliary files
 *.aux
 *.log

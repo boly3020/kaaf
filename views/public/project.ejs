@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= project.title %> - <%= project.category %> project by KAAF">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css?v=3">
+    <link rel="icon" type="image/svg+xml" href="/assets/KAAF-Final-Logo.svg">
+</head>
+<body class="project-page">
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="KAAF Home">
+                <img src="/assets/KAAF-Final-Logo.svg" alt="KAAF Logo" class="logo-svg">
+            </a>
+        </div>
+    </header>
+
+    <!-- Back Button -->
+    <a href="/#projects" class="project-back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Projects
+    </a>
+
+    <!-- Full-Screen Gallery Hero -->
+    <section class="project-gallery-hero" id="projectGalleryHero">
+        <div class="project-gallery-slide active">
+            <img src="<%= project.featuredImage %>" alt="<%= project.title %> - Main View">
+        </div>
+        <% if (project.galleryImages && project.galleryImages.length > 0) { %>
+            <% project.galleryImages.forEach(function(img, i) { %>
+            <div class="project-gallery-slide">
+                <img src="<%= img %>" alt="<%= project.title %> - View <%= i + 2 %>">
+            </div>
+            <% }); %>
+        <% } %>
+    </section>
+
+    <!-- Gallery Navigation -->
+    <div class="gallery-nav">
+        <button class="gallery-nav-btn" id="galleryPrev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <div class="gallery-counter">
+            <span id="galleryCounter">1 / <%= 1 + (project.galleryImages ? project.galleryImages.length : 0) %></span>
+        </div>
+        <button class="gallery-nav-btn" id="galleryNext" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Info Toggle Button -->
+    <button class="project-info-toggle" id="infoToggle" aria-label="Toggle project info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+    </button>
+
+    <!-- Floating Sidebar -->
+    <aside class="project-info-sidebar" id="projectInfoSidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+
+        <span class="sidebar-category"><%= project.category %></span>
+        <h1 class="sidebar-title"><%= project.title %></h1>
+
+        <p class="sidebar-description"><%= project.description %></p>
+
+        <div class="sidebar-specs">
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Location</span>
+                <span class="sidebar-spec-value"><%= project.location %></span>
+            </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Year</span>
+                <span class="sidebar-spec-value"><%= project.year %></span>
+            </div>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Type</span>
+                <span class="sidebar-spec-value"><%= project.type %></span>
+            </div>
+            <% if (project.status) { %>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Status</span>
+                <span class="sidebar-spec-value"><%= project.status %></span>
+            </div>
+            <% } %>
+            <% if (project.area) { %>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Area</span>
+                <span class="sidebar-spec-value"><%= project.area %></span>
+            </div>
+            <% } %>
+            <% if (project.floors) { %>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Floors</span>
+                <span class="sidebar-spec-value"><%= project.floors %></span>
+            </div>
+            <% } %>
+            <% if (project.style) { %>
+            <div class="sidebar-spec">
+                <span class="sidebar-spec-label">Style</span>
+                <span class="sidebar-spec-value"><%= project.style %></span>
+            </div>
+            <% } %>
+        </div>
+
+        <div class="sidebar-actions">
+            <% if (project.pdfFile) { %>
+            <a href="<%= project.pdfFile %>" class="sidebar-btn" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                </svg>
+                View Documentation
+            </a>
+            <a href="<%= project.pdfFile %>" class="sidebar-btn" download>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PDF
+            </a>
+            <% } %>
+            <a href="/#contact" class="sidebar-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Inquire About This Project
+            </a>
+        </div>
+    </aside>
+
+    <!-- Grid Gallery Section -->
+    <section class="project-grid-gallery">
+        <div class="grid-gallery">
+            <div class="grid-gallery-item" data-index="0">
+                <img src="<%= project.featuredImage %>" alt="Gallery Image 1">
+                <div class="grid-gallery-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <% if (project.galleryImages) { %>
+                <% project.galleryImages.forEach(function(img, i) { %>
+                <div class="grid-gallery-item" data-index="<%= i + 1 %>">
+                    <img src="<%= img %>" alt="Gallery Image <%= i + 2 %>">
+                    <div class="grid-gallery-overlay">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                </div>
+                <% }); %>
+            <% } %>
+        </div>
+    </section>
+
+    <script src="/js/main.js" defer></script>
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.project-gallery-slide');
+            const prevBtn = document.getElementById('galleryPrev');
+            const nextBtn = document.getElementById('galleryNext');
+            const counter = document.getElementById('galleryCounter');
+            const infoToggle = document.getElementById('infoToggle');
+            const sidebar = document.getElementById('projectInfoSidebar');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const gridItems = document.querySelectorAll('.grid-gallery-item');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function updateGallery() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[currentSlide].classList.add('active');
+                counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateGallery();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateGallery();
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateGallery();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            infoToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+
+            sidebarClose.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+
+            gridItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const index = parseInt(item.getAttribute('data-index'));
+                    goToSlide(index);
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'Escape') sidebar.classList.remove('active');
+            });
+
+            let autoplayInterval = setInterval(nextSlide, 5000);
+
+            infoToggle.addEventListener('click', () => clearInterval(autoplayInterval));
+            sidebarClose.addEventListener('click', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+        })();
+    </script>
+</body>
+</html>

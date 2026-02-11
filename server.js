@@ -41,7 +41,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI
+        mongoUrl: process.env.MONGODB_URI || process.env.MONGO_URL || process.env.DATABASE_URL
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 // 24 hours

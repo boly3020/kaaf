@@ -13,10 +13,13 @@ const app = express();
 // Trust proxy for Railway/Render (needed for secure cookies behind reverse proxy)
 app.set('trust proxy', 1);
 
-// Connect to MongoDB
-connectDB().then(() => {
-    // Auto-seed on first run if DB is empty
-    seedIfEmpty();
+// Connect to MongoDB, seed if needed, then start server
+const PORT = process.env.PORT || 3000;
+connectDB().then(async () => {
+    await seedIfEmpty();
+    app.listen(PORT, () => {
+        console.log(`KAAF server running on port ${PORT}`);
+    });
 });
 
 // View engine
@@ -238,7 +241,3 @@ async function seedIfEmpty() {
     }
 }
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`KAAF server running on port ${PORT}`);
-});

@@ -1937,9 +1937,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-vision-card {
     padding: var(--space-xl);
-    padding-left: var(--space-lg);
     background: var(--color-cream-dark);
-    border-left: 3px solid var(--color-accent);
     transition: transform var(--transition-base);
 }
 
@@ -1961,6 +1959,11 @@ h1, h2, h3, h4, h5, h6 {
 .about-vision-icon svg {
     width: 40px;
     height: 40px;
+}
+
+.about-vision-text {
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-md);
 }
 
 .about-vision-card h3 {

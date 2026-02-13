@@ -1125,7 +1125,7 @@ h1, h2, h3, h4, h5, h6 {
 .contact-item {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-md);
+    gap: var(--space-xs);
     margin-bottom: var(--space-md);
 }
 
@@ -1152,11 +1152,13 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: rgba(255, 255, 255, 0.5);
-    margin-bottom: var(--space-xs);
+    margin-bottom: 2px;
+    line-height: 1;
 }
 
 .contact-item a,
 .contact-item address {
+    line-height: 1;
     color: var(--color-white);
     transition: color var(--transition-fast);
 }

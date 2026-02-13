@@ -23,8 +23,8 @@
 
         <nav class="nav" id="nav" aria-label="Main navigation">
             <ul class="nav-list">
-                <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#home' : '' %>" class="nav-link">Home</a></li>
-                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#home' : '' %>" class="nav-link<%= (typeof page !== 'undefined' && page === 'home') ? ' active' : '' %>">Home</a></li>
+                <li><a href="/about" class="nav-link<%= (typeof page !== 'undefined' && page === 'about') ? ' active' : '' %>">About</a></li>
                 <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#services' : '#services' %>" class="nav-link">Services</a></li>
                 <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#projects' : '#projects' %>" class="nav-link">Projects</a></li>
                 <li><a href="/<%= (typeof page !== 'undefined' && page === 'home') ? '#contact' : '#contact' %>" class="nav-link nav-link--cta">Contact</a></li>

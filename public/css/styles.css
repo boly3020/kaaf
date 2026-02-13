@@ -8,10 +8,10 @@
    -------------------------------------------------------------------------- */
 :root {
     /* Primary Colors - from branding PDF */
-    --color-primary: #1a3a3a;
-    --color-primary-light: #2a5a5a;
-    --color-accent: #c4703c;
-    --color-accent-hover: #d4804c;
+    --color-primary: #09221E;
+    --color-primary-light: #0d3a33;
+    --color-accent: #D26B31;
+    --color-accent-hover: #e07b41;
     --color-olive: #6b7c5a;
     --color-gold: #c4a882;
 
@@ -48,7 +48,7 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
     --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-    --shadow-glow: 0 0 40px rgba(196, 112, 60, 0.3);
+    --shadow-glow: 0 0 40px rgba(210, 107, 49, 0.3);
 
     /* Border Radius - Square/Symmetric Design */
     --radius-sm: 0;
@@ -275,12 +275,12 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
     color: var(--color-white);
-    box-shadow: 0 4px 15px rgba(196, 112, 60, 0.3);
+    box-shadow: 0 4px 15px rgba(210, 107, 49, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(196, 112, 60, 0.4);
+    box-shadow: 0 8px 25px rgba(210, 107, 49, 0.4);
 }
 
 .btn-primary:hover svg {
@@ -661,7 +661,7 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
     color: var(--color-white);
     filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.8))
-            drop-shadow(0 0 80px rgba(196, 112, 60, 0.4));
+            drop-shadow(0 0 80px rgba(210, 107, 49, 0.4));
 }
 
 @keyframes fadeInDown {
@@ -2022,7 +2022,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(to bottom, var(--color-accent), rgba(196, 112, 60, 0.2));
+    background: linear-gradient(to bottom, var(--color-accent), rgba(210, 107, 49, 0.2));
 }
 
 .process-step {
@@ -2136,7 +2136,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(196, 112, 60, 0.1), transparent);
+    background: radial-gradient(circle at 50% 50%, rgba(210, 107, 49, 0.1), transparent);
 }
 
 .about-cta h2 {

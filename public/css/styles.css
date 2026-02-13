@@ -252,7 +252,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-size: 0.875rem;
     font-weight: 500;
-    border-radius: var(--radius-md);
+    border-radius: 10px;
     transition: all var(--transition-base);
     text-align: center;
     position: relative;
@@ -1937,6 +1937,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-vision-card {
     padding: var(--space-xl);
+    padding-left: var(--space-lg);
     background: var(--color-cream-dark);
     border-left: 3px solid var(--color-accent);
     transition: transform var(--transition-base);
@@ -1947,19 +1948,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-vision-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--color-accent);
+    width: 48px;
+    height: 48px;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--space-md);
-    color: var(--color-white);
+    color: var(--color-accent);
 }
 
 .about-vision-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 .about-vision-card h3 {
@@ -1999,7 +2000,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: var(--space-sm);
-    color: var(--color-white);
+    color: var(--color-accent);
 }
 
 .value-item p {
@@ -2018,7 +2019,7 @@ h1, h2, h3, h4, h5, h6 {
 .process-timeline::before {
     content: '';
     position: absolute;
-    left: 30px;
+    left: 19px;
     top: 0;
     bottom: 0;
     width: 2px;
@@ -2027,6 +2028,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .process-step {
     display: flex;
+    align-items: flex-start;
     gap: var(--space-lg);
     margin-bottom: var(--space-2xl);
     position: relative;
@@ -2038,13 +2040,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .process-number {
     flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    background: var(--color-accent);
+    width: 40px;
+    height: 40px;
+    background: var(--color-black);
+    border: 2px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--color-white);
     position: relative;
@@ -2053,7 +2056,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .process-content {
     flex: 1;
-    padding-top: var(--space-xs);
+    padding-top: 0;
 }
 
 .process-content h3 {
@@ -2061,6 +2064,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin-bottom: var(--space-sm);
     color: var(--color-white);
+    line-height: 40px;
 }
 
 .process-content p {
@@ -2072,14 +2076,14 @@ h1, h2, h3, h4, h5, h6 {
 /* About Services Grid */
 .about-services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
     margin-top: var(--space-xl);
 }
 
 .about-service-card {
     padding: var(--space-xl);
-    background: var(--color-cream);
+    background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all var(--transition-base);
 }
@@ -2090,19 +2094,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-service-card .service-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--color-accent);
+    width: 48px;
+    height: 48px;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--space-md);
-    color: var(--color-white);
+    color: var(--color-accent);
 }
 
 .about-service-card .service-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
 }
 
 .about-service-card h3 {
@@ -2121,12 +2125,12 @@ h1, h2, h3, h4, h5, h6 {
 /* About CTA */
 .about-cta {
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
+    width: 100%;
     padding: var(--space-3xl) var(--space-lg);
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     position: relative;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .about-cta::before {
@@ -2169,13 +2173,13 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .process-timeline::before {
-        left: 40px;
+        left: 19px;
     }
 
     .process-number {
-        width: 80px;
-        height: 80px;
-        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
 

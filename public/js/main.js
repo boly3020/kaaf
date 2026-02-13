@@ -192,7 +192,7 @@
                 position: absolute;
                 width: ${Math.random() * 4 + 1}px;
                 height: ${Math.random() * 4 + 1}px;
-                background: rgba(196, 112, 60, ${Math.random() * 0.5 + 0.2});
+                background: rgba(210, 107, 49, ${Math.random() * 0.5 + 0.2});
                 border-radius: 50%;
                 left: ${Math.random() * 100}%;
                 top: ${Math.random() * 100}%;

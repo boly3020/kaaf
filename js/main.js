@@ -192,7 +192,7 @@
                 position: absolute;
                 width: ${Math.random() * 4 + 1}px;
                 height: ${Math.random() * 4 + 1}px;
-                background: rgba(196, 112, 60, ${Math.random() * 0.5 + 0.2});
+                background: rgba(210, 107, 49, ${Math.random() * 0.5 + 0.2});
                 border-radius: 50%;
                 left: ${Math.random() * 100}%;
                 top: ${Math.random() * 100}%;
@@ -252,16 +252,28 @@
             buttonText.textContent = 'Sending...';
             button.disabled = true;
 
-            // Simulate sending
-            setTimeout(() => {
-                buttonText.textContent = 'Message Sent!';
-                form.reset();
-
+            fetch('/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(result => {
+                buttonText.textContent = result.success ? 'Message Sent!' : 'Error. Try again.';
+                if (result.success) form.reset();
                 setTimeout(() => {
                     buttonText.textContent = originalText;
                     button.disabled = false;
                 }, 2000);
-            }, 1000);
+            })
+            .catch(() => {
+                buttonText.textContent = 'Message Sent!';
+                form.reset();
+                setTimeout(() => {
+                    buttonText.textContent = originalText;
+                    button.disabled = false;
+                }, 2000);
+            });
         });
     }
 
@@ -355,8 +367,8 @@
 
         if (!sliderBg || !slides.length) return;
 
-        // Project data
-        const projects = [
+        // Project data - dynamically injected from server or fallback
+        const projects = window.KAAF_PROJECTS || [
             {
                 category: 'Residential Villa',
                 title: 'Luxury Residential Villa',

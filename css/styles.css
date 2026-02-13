@@ -1938,12 +1938,9 @@ h1, h2, h3, h4, h5, h6 {
 .about-vision-card {
     padding: var(--space-xl);
     background: var(--color-cream-dark);
-    transition: transform var(--transition-base);
 }
 
-.about-vision-card:hover {
-    transform: translateX(10px);
-}
+
 
 .about-vision-icon {
     width: 48px;
@@ -2046,7 +2043,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 40px;
     height: 40px;
     background: var(--color-black);
-    border: 2px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2133,7 +2129,6 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
 }
 
 .about-cta::before {

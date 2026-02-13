@@ -1224,7 +1224,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
+    border-radius: 10px;
     color: var(--color-white);
     font-family: inherit;
     font-size: 1rem;

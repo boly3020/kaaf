@@ -369,6 +369,14 @@ router.post('/settings', isAuthenticated, upload.fields([
             data.aboutImage2 = '/uploads/projects/' + req.files.aboutImage2File[0].filename;
         }
 
+        // Normalize social links: strip a leading '#' left over from the
+        // placeholder when a URL is pasted after it (e.g. "#https://...")
+        ['instagram', 'linkedin', 'behance'].forEach(key => {
+            if (typeof data[key] === 'string') {
+                data[key] = data[key].trim().replace(/^#+(?=\S)/, '') || '#';
+            }
+        });
+
         // Handle core values
         if (data.valueTitle && data.valueDesc) {
             const titles = Array.isArray(data.valueTitle) ? data.valueTitle : [data.valueTitle];

@@ -91,19 +91,30 @@
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
 
-                if (target) {
-                    const headerHeight = header ? header.offsetHeight : 0;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-                    const offsetPosition = targetPosition - headerHeight;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                // Empty placeholder links: do nothing
+                if (href === '#') {
+                    e.preventDefault();
+                    return;
                 }
+
+                // Only handle real in-page anchors like "#projects";
+                // anything else (e.g. a pasted URL) falls through to the browser
+                if (!/^#[A-Za-z][\w-]*$/.test(href)) return;
+
+                const target = document.querySelector(href);
+                if (!target) return;
+
+                e.preventDefault();
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = targetPosition - headerHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             });
         });
     }

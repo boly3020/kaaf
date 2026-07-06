@@ -5,6 +5,7 @@ const Project = require('../models/Project');
 const Service = require('../models/Service');
 const SiteSettings = require('../models/SiteSettings');
 const ContactMessage = require('../models/ContactMessage');
+const { sendContactNotification } = require('../config/mailer');
 
 // Helper to get settings
 async function getSettings() {
@@ -128,13 +129,19 @@ router.post('/contact', contactLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Please fill in all required fields.' });
         }
 
-        await ContactMessage.create({
+        const saved = await ContactMessage.create({
             name,
             email,
             phone,
             projectType: project,
             message
         });
+
+        // Notify by email in the background; the visitor's submission is
+        // already saved, so a mail failure must not fail the request
+        sendContactNotification(saved).catch(err =>
+            console.error('Contact email notification failed:', err.message)
+        );
 
         res.json({ success: true, message: 'Message sent successfully!' });
     } catch (err) {

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const rateLimit = require('express-rate-limit');
 const Project = require('../models/Project');
 const Service = require('../models/Service');
 const SiteSettings = require('../models/SiteSettings');
@@ -81,10 +82,47 @@ router.get('/projects/:slug', async (req, res) => {
     }
 });
 
-// Contact form submission
-router.post('/contact', async (req, res) => {
+// Sitemap for search engines
+router.get('/sitemap.xml', async (req, res) => {
     try {
-        const { name, email, phone, project, message } = req.body;
+        const base = `${req.protocol}://${req.get('host')}`;
+        const projects = await Project.find({ isActive: true }).select('slug updatedAt');
+
+        const urls = [
+            `<url><loc>${base}/</loc></url>`,
+            `<url><loc>${base}/about</loc></url>`,
+            ...projects.map(p =>
+                `<url><loc>${base}/projects/${p.slug}</loc><lastmod>${p.updatedAt.toISOString().split('T')[0]}</lastmod></url>`
+            )
+        ];
+
+        res.type('application/xml').send(
+            `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join('')}</urlset>`
+        );
+    } catch (err) {
+        console.error(err);
+        res.status(500).end();
+    }
+});
+
+// Limit contact submissions to reduce spam floods
+const contactLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { success: false, message: 'Too many messages sent. Please try again later.' }
+});
+
+// Contact form submission
+router.post('/contact', contactLimiter, async (req, res) => {
+    try {
+        const { name, email, phone, project, message, company } = req.body;
+
+        // Honeypot: real users never fill this hidden field
+        if (company) {
+            return res.json({ success: true, message: 'Message sent successfully!' });
+        }
 
         if (!name || !email || !message) {
             return res.status(400).json({ success: false, message: 'Please fill in all required fields.' });

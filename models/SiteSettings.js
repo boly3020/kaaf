@@ -62,7 +62,7 @@ const siteSettingsSchema = new mongoose.Schema({
 
     // Footer
     footerText: { type: String, default: 'Karim Alaa Architectural Firm' },
-    copyrightYear: { type: String, default: '2025' }
+    copyrightYear: { type: String, default: String(new Date().getFullYear()) }
 }, { timestamps: true });
 
 module.exports = mongoose.model('SiteSettings', siteSettingsSchema);

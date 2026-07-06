@@ -219,7 +219,7 @@ async function seed() {
             ctaTitle: 'Ready to Transform Your Space?',
             ctaText: 'Let\'s discuss your vision and create something extraordinary together.',
             footerText: 'Karim Alaa Architectural Firm',
-            copyrightYear: '2025'
+            copyrightYear: String(new Date().getFullYear())
         });
         console.log('Site settings created');
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const rateLimit = require('express-rate-limit');
 const { isAuthenticated, isGuest } = require('../middleware/auth');
 const upload = require('../middleware/upload');
 const User = require('../models/User');
@@ -29,8 +30,23 @@ router.get('/login', isGuest, (req, res) => {
     });
 });
 
+// Limit login attempts to slow down brute-force attacks
+const loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+    handler: (req, res) => {
+        res.status(429).render('admin/login', {
+            layout: false,
+            title: 'Admin Login',
+            error: 'Too many login attempts. Please try again in 15 minutes.'
+        });
+    }
+});
+
 // Login handler
-router.post('/login', isGuest, async (req, res) => {
+router.post('/login', loginLimiter, isGuest, async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });

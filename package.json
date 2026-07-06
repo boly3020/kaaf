@@ -10,7 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://local_proxy@127.0.0.1:62268/git/boly3020/kaaf"
+    "url": "https://github.com/boly3020/kaaf"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +25,7 @@
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^8.5.2",
     "express-session": "^1.19.0",
     "method-override": "^3.0.0",
     "mongoose": "^9.2.1",

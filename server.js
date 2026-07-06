@@ -47,7 +47,10 @@ app.use(session({
         mongoUrl: process.env.MONGODB_URI
     }),
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 24 hours
+        maxAge: 1000 * 60 * 60 * 24, // 24 hours
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: 'auto' // secure cookies when served over HTTPS (trust proxy is set)
     }
 }));
 
@@ -55,6 +58,7 @@ app.use(session({
 app.use((req, res, next) => {
     res.locals.currentUser = req.session.userId || null;
     res.locals.currentPath = req.path;
+    res.locals.canonicalUrl = `${req.protocol}://${req.get('host')}${req.path === '/' ? '/' : req.path}`;
     next();
 });
 
@@ -232,7 +236,7 @@ async function seedIfEmpty() {
             ctaTitle: 'Ready to Transform Your Space?',
             ctaText: 'Let\'s discuss your vision and create something extraordinary together.',
             footerText: 'Karim Alaa Architectural Firm',
-            copyrightYear: '2025'
+            copyrightYear: String(new Date().getFullYear())
         });
 
         console.log('Auto-seed complete! Admin: admin@kaaf.design / admin123');
